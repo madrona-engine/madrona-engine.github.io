@@ -1,0 +1,84 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: Roboto, Arial;
+  max-width: 1500px;
+  margin: auto;
+}
+
+/* Style the navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #98C95F;
+  border-radius: 15px;
+  padding: 10px 30px;
+  margin: 5px;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  display: flex;
+  text-decoration: none;
+  color: #071D28;
+  align-items: center;
+}
+
+/* Style the navigation bar logo */
+.navbar p.logo {
+  font-family: JetBrains Mono, Arial;
+  font-weight: 800;
+  font-size: 36pt;
+  margin: 10px;
+}
+
+/* Style the navigation bar items */
+.navbar-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16pt;
+  font-weight: 500;
+}
+
+.navbar-items a {
+  margin: 10px;
+  background-color: #A1CE6E;
+  border-style: solid;
+  border-color: #B5D88D;
+  border-radius: 15px;
+  height: 30px;
+  padding: 10px;
+}
+
+.navbar-items a.link:hover {
+  color: #c46a27;
+  background-color: #ABD37D;
+  border-color: #BEDD9A;
+}
+
+/* Style the site content */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 125px;
+}
+
+h1 {
+  font-family: Roboto, Arial;
+  font-weight: 700;
+  font-size: 24pt;
+  color: #071D28;
+  background-color: #98C95F;
+  border-radius: 15px;
+  padding: 5px 20px;
+}
+
+.blurb {
+  font-family: Roboto, Arial;
+  font-size: 14pt;
+  color: #071D28;
+}
