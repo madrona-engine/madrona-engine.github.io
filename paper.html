@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Madrona Engine</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="navbar">
+      <a href="new.html">
+        <img src="madrona_simple.png" width="100"></img>
+        <p class="logo">Madrona Engine</p>
+      </a>
+      <div class="navbar-items">
+        <a href="paper.html" class="link">
+          Paper
+        </a>
+        <a href="https://github.com/shacklettbp/madrona" class="link">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="content">
+      <h1>An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation</h1>
+      <h2>Overview:</h2>
+      <p class="blurb">
+      We published a technical paper on the Madrona Engine in Transactions on Graphics 2023 (presented at SIGGRAPH 2023).<br>You can find a copy of the paper here: <a href="shacklett_siggraph23.pdf">https://madrona-engine.github.io/shacklett_siggraph23.pdf</a>.
+      </p>
+
+      <h2>Abstract:</h2>
+      <p>
+        Training AI agents to perform complex tasks in simulated worlds requires millions to billions of steps of experience. To achieve high performance, today's fastest simulators for training AI agents adopt the idea of batch simulation: using a single simulation engine to simultaneously step many environments in parallel. We introduce a framework for productively authoring novel training environments (including custom logic for environment generation, environment time stepping, and generating agent observations and rewards) that execute as high-performance, GPU-accelerated batched simulators. Our key observation is that the entity-component-system (ECS) design pattern, popular for expressing CPU-side game logic today, is also well-suited for providing the structure needed for high-performance batched simulators. We contribute the first fully-GPU accelerated ECS implementation that natively supports batch environment simulation. We demonstrate how ECS abstractions impose structure on a training environment's logic and state  that allows the system to efficiently manage state, amortize work, and identify GPU-friendly coherent parallel computations within and across different environments. We implement several learning environments in this framework, and demonstrate GPU speedups of two to three orders of magnitude over open source CPU baselines and 5-33× over strong baselines running on a 32-thread CPU.  An implementation of the OpenAI hide and seek 3D environment written in our framework, which performs rigid body physics and ray tracing in each simulator step, achieves over 1.9&nbsp;million environment steps per second on a single GPU.
+      </p>
+
+      <h2>Authors:</h2>
+      <ul>
+          <li><a href="https://cs.stanford.edu/~bps">Brennan Shacklett</a></li>
+          <li><a href="https://www.linkedin.com/in/luc-rosenzweig/">Luc Guy Rosenzweig</a></li>
+          <li><a href="https://zhiqiangxie.com/">Zhiqiang Xie</a></li>
+          <li><a href="https://scholar.google.com/citations?user=wr9RgmcAAAAJ&hl=en">Bidipta Sarkar</a></li>
+          <li><a href="https://www.andrewszot.com/">Andrew Szot</a></li>
+          <li><a href="https://wijmans.xyz/">Erik Wijmans</a></li>
+          <li><a href="http://vladlen.info/">Vladlen Koltun</a></li>
+          <li><a href="https://faculty.cc.gatech.edu/~dbatra/">Dhruv Batra</a></li>
+          <li><a href="http://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian</a></li>
+      </ul>
+
+
+    </div>
+
+  </body>
+</html>
