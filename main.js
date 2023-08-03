@@ -11,3 +11,39 @@ replay_button.addEventListener("click", () => {
     video.currentTime = 0;
     video.play();
 });
+
+const nav_height = document.querySelector(".madrona-nav-wrapper").offsetHeight;
+
+function scrollToDiv(tgt) {
+    const elem = document.querySelector(tgt);
+    if (!elem) {
+        return;
+    }
+
+    const tgt_offset = elem.getBoundingClientRect().top;
+    const total_offset = tgt_offset - nav_height;
+    window.scrollBy({
+        top: total_offset,
+        behavior: 'smooth'
+    });
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    const href = link.getAttribute('href');
+    
+    if (href == '#') {
+        link.addEventListener('click', (e) => {
+            console.log(link);
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    } else {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToDiv(href);
+        });
+    }
+});

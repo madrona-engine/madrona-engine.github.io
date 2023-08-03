@@ -1,96 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
     <title>Madrona Engine</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="style.css">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains+Mono' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <!-- <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9' crossorigin='anonymous'> -->
+    <link rel='stylesheet' href='style.css'>
   </head>
 
   <body>
-    <div class="madrona-nav-wrapper">
-      <div class="madrona-nav">
-        <a href="new.html">
-          <img src="madrona_simple.png" width="100" />
-          <span class="logo">Madrona&nbsp;Engine</span>
+    <div class='madrona-nav-wrapper'>
+      <div class='madrona-nav'>
+        <a href='#'>
+          <img src='madrona_simple.png' width='100' />
+          <span class='logo'>Madrona&nbsp;Engine</span>
         </a>
-        <div class="madrona-nav-items">
-          <a href="#paper" class="link">
+        <div class='madrona-nav-items'>
+          <a href='#paper' class='link'>
             Paper
           </a>
-          <a href="https://github.com/shacklettbp/madrona" class="link">
+          <a href='#faq' class='link'>
+            FAQ 
+          </a>
+          <a href='https://github.com/shacklettbp/madrona' class='link'>
             GitHub
+          </a>
+          <a href='#' class='link'>
+            Blog
           </a>
         </div>
       </div>
     </div>
 
-    <section id="video">
-      <div id="main-video-container">
-        <video autoplay muted playsinline width="800">
-          <source src="zoomout.mp4" type="video/mp4" />
+    <section id='video'>
+      <div id='main-video-container'>
+        <video autoplay muted playsinline width='800'>
+          <source src='zoomout.mp4' type='video/mp4' />
         </video>
-        <button class="replay">&#x21BB;</button>
+        <button class='replay'>&#x21BB;</button>
       </div>
     </section>
 
-    <section id="intro" class="info-section">
+    <section id='intro' class='info-section'>
       <h1>About the Engine</h1>
       <div class='content'>
-        <p class="blurb">The Engine does cool GPU stuff.</p>
+        <p class='detail blurb'>
+          Madrona is a prototype game engine for creating high-throughput, GPU-accelerated batch simulators: simulators that generate millions of aggregate simulation steps per second by running thousands of virtual environment instances in parallel on a single GPU. The core goal of the engine is to provide orders of magnitude speedups for AI agent training (and other applications needing large amounts of simulated experience) by enabling researchers to build new high-performance simulators across a wide range of tasks.
+        </p>
+        <p class='detail blurb'>
+        For more information, read <a href='#'>the blog post introducing the engine</a>, <a href='#'>a blog on building an Overcooked batch simulator using Madrona</a>, visit <a href='https://github.com/shacklettbp/madrona'>our GitHub repo</a>, or <a href='#paper-details'>read the paper</a>.
+        </p>
+
       </div>
     </section>
 
-    <section id="paper" class="info-section">
+    <section id='paper' class='info-section'>
       <h1>Technical Paper</h1>
       <div class='content'>
-        <h2>Overview</h2>
-        <p class="detail">
+        <h2><span class='underline'>Overview</span></h2>
+        <p class='detail'>
            For an in-depth description of the core engine implementation details and initial performance results and analyis, refer to our technical paper on the engine:
         </p>
 
         <div class='paper-block'>
           <div class='paper-title-wrapper'>
-            <div class='paper-title'>
+            <div class='paper-title underline'>
               An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation
             </div>
           </div>
           <div class='paper-details-wrapper'>
-            <div class='paper-details'>
+            <div id='paper-details' class='paper-details'>
               <div class='authors'>
-                <a href="https://cs.stanford.edu/~bps">Brennan Shacklett</a>,
-                <a href="https://www.linkedin.com/in/luc-rosenzweig/">Luc Guy Rosenzweig</a>,
-                <a href="https://zhiqiangxie.com/">Zhiqiang Xie</a>,
-                <a href="https://scholar.google.com/citations?user=wr9RgmcAAAAJ&hl=en">Bidipta Sarkar</a>,
-                <a href="https://www.andrewszot.com/">Andrew Szot</a>,
+                <a href='https://cs.stanford.edu/~bps'>Brennan Shacklett</a>,
+                <a href='https://www.linkedin.com/in/luc-rosenzweig/'>Luc Guy Rosenzweig</a>,
+                <a href='https://zhiqiangxie.com/'>Zhiqiang Xie</a>,
+                <a href='https://scholar.google.com/citations?user=wr9RgmcAAAAJ&hl=en'>Bidipta Sarkar</a>,
+                <a href='https://www.andrewszot.com/'>Andrew Szot</a>,
               </div>
               <div class='authors'>
-                <a href="https://wijmans.xyz/">Erik Wijmans</a>,
-                <a href="http://vladlen.info/">Vladlen Koltun</a>,
-                <a href="https://faculty.cc.gatech.edu/~dbatra/">Dhruv Batra</a>,
-                <a href="http://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian</a>
+                <a href='https://wijmans.xyz/'>Erik Wijmans</a>,
+                <a href='http://vladlen.info/'>Vladlen Koltun</a>,
+                <a href='https://faculty.cc.gatech.edu/~dbatra/'>Dhruv Batra</a>,
+                <a href='http://graphics.stanford.edu/~kayvonf/'>Kayvon Fatahalian</a>
               </div>
               <div class='conference'>
                 Transactions on Graphics 2023 (Presented at SIGGRAPH 2023)
               </div>
             </div>
             <div id='paper-download'>
-              <a href="shacklett_siggraph23.pdf" target="_blank">
-                <span href="shacklett_siggraph23.pdf" target="_blank" class="pdf-download-icon material-symbols-outlined">description</span><div class="pdf-download-text">PDF</div>
+              <a href='shacklett_siggraph23.pdf' target='_blank'>
+                <span href='shacklett_siggraph23.pdf' target='_blank' class='pdf-download-icon material-symbols-outlined'>description</span><div class='pdf-download-text'>PDF</div>
               </a>
             </div>
           </div>
         </div>
 
-        <h2>Abstract</h2>
-        <p class='detail'>
+        <h2><span class='underline'>Abstract</span></h2>
+        <p class='detail paper-abstract'>
         Training AI agents to perform complex tasks in simulated worlds requires millions to billions of steps of experience. To achieve high performance, today's fastest simulators for training AI agents adopt the idea of batch simulation: using a single simulation engine to simultaneously step many environments in parallel. We introduce a framework for productively authoring novel training environments (including custom logic for environment generation, environment time stepping, and generating agent observations and rewards) that execute as high-performance, GPU-accelerated batched simulators. Our key observation is that the entity-component-system (ECS) design pattern, popular for expressing CPU-side game logic today, is also well-suited for providing the structure needed for high-performance batched simulators. We contribute the first fully-GPU accelerated ECS implementation that natively supports batch environment simulation. We demonstrate how ECS abstractions impose structure on a training environment's logic and state  that allows the system to efficiently manage state, amortize work, and identify GPU-friendly coherent parallel computations within and across different environments. We implement several learning environments in this framework, and demonstrate GPU speedups of two to three orders of magnitude over open source CPU baselines and 5x &mdash; 33x over strong baselines running on a 32-thread CPU.  An implementation of the OpenAI hide and seek 3D environment written in our framework, which performs rigid body physics and ray tracing in each simulator step, achieves over 1.9&nbsp;million environment steps per second on a single GPU.
         </p>
 
-        <h2>Citation</h2>
+        <h2><span class='underline'>Citation</span></h2>
         <pre class='citation'><code>@article{shacklett23madrona,
     title   = {An Extensible, Data-Oriented Architecture for
                High-Performance, Many-World Simulation},
@@ -102,11 +114,50 @@
     volume  = {42},
     number  = {4},
     year    = {2023}
-        }</code></pre>
+}</code></pre>
       </div>
     </section>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> -->
-    <script src="main.js"></script>
+    <section id='faq' class='info-section'>
+      <h1>FAQ</h1>
+      <div class='content'>
+        <h3>What tasks does Madrona support?</h3>
+        <p class='detail'>
+        Madrona is a game engine / framework for implementing new batch simulators, not a batch simulator itself. The goal of Madrona is to make implementing new, highly performant batch simulators as easy as possible, so machine learning researchers do not need to choose between a handful of highly optimized simulators for a few tasks or relying on training agents in existing game engines that are often orders of magnitude slower.
+        </p>
+        <p class='detail'>
+        For a list of simulators built with Madrona at time of release, refer to the <a href='https://github.com/shacklettbp/madrona#example-madrona-based-simulators'>Madrona GitHub README</a>.
+        </p>
+
+        <h3>I have a large non-batch simulator written in Python. What is the easiest way to port it to Madrona?</h3>
+        <p class='detail'>
+        Please read <a href='#'>Bidipta Sarkar's blog post on porting the Overcooked AI environment to Madrona</a>. That post describes exactly the process of extracting the core simulation logic from a large Python code base and re-implementing it within Madrona's C++ APIs.
+        </p>
+
+        <h3>Can I use Madrona while keeping parts of my simulator (for example reward functions) in Python?</h3>
+        <p class='detail'>
+        While Madrona currently requires the core custom simulation logic for a task to be written in C++, logic that executes at the end of the simulation step like reward functions can be implemented using PyTorch tensor operations. This is possible by exporting any of the internal simulation state (ECS components) needed as input to the reward functions as PyTorch tensors, and then computing rewards in PyTorch after Madrona finishes the current step. Madrona provides built-in support for exporting ECS components to PyTorch, making this relatively straightforward.
+        </p>
+
+        <h3>Does Madrona have renderer support? Can I use Madrona for training "pixels to actions" agents?</h3>
+        <p class='detail'>
+        Madrona currently has rendering support for visualization purposes only. Concretely, while Madrona can simulate thousands of environments concurrently, the visualizer can only view a single environment at a time, and this output isn't exposed to PyTorch. Adding batch renderer support using ideas from our <a href='https://graphics.stanford.edu/projects/bps3D/'>bps3D project</a> is on the roadmap.
+        </p>
+
+        <h3>How is Madrona related to projects like NVIDIA Warp or Numba?</h3>
+        <p class='detail'>
+        These projects (and others) aim to make parallel GPU programming easier by bringing high-level languages (Python) to the GPU. Such languages could become an excellent way to write individual ECS systems within the Madrona engine given appropriate integration with Madrona's ECS storage patterns and megakernel design. This would combine the advantages of high-level languages with Madrona's ECS APIs for managing state (custom components, creating and deleting entities) and gluing together many disparate systems to build a complete batch simulator. 
+        </p>
+
+        <h3>Can I use Madrona with a different learning framework than PyTorch?</h3>
+        <p class='detail'>
+        Madrona exports simulation state to learning frameworks using <a href='https://github.com/wjakob/nanobind'>nanobind</a>'s dlpack integration that supports most common frameworks. Currently, only PyTorch entry points for this functionality are exposed, because that is the framework we use and test. If you're interested in using Madrona with a different learning framework, please open a <a href='https://github.com/shacklettbp/madrona/issues'>GitHub issue</a> with a link to training code in your preferred framework for testing purposes and we can easily add the core engine support.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js' integrity='sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm' crossorigin='anonymous'></script> -->
+    <script src='main.js'></script>
   </body>
 </html>
