@@ -23,6 +23,10 @@ a, a:visited {
   color: #1c668c;
 }
 
+a:hover {
+  color: #c46a27;
+}
+
 h1, h2, h3, p {
   padding: 0;
   margin: 0;
@@ -101,8 +105,8 @@ pre {
 
 .madrona-nav-items a.link:hover {
   color: #c46a27;
-  background-color: #ABD37D;
-  border-color: #BEDD9A;
+  background-color: #add97a;
+  border-color: #cce9a9;
 }
 
 /* Style the site content */
