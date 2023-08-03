@@ -9,29 +9,78 @@
   </head>
 
   <body>
-    <div class="navbar">
-      <a href="new.html">
-        <img src="madrona_simple.png" width="100"></img>
-        <p class="logo">Madrona Engine</p>
-      </a>
-      <div class="navbar-items">
-        <a href="paper.html" class="link">
-          Paper
+    <div class="navbar-wrapper">
+      <div class="navbar">
+        <a href="new.html">
+          <img src="madrona_simple.png" width="100" />
+          <p class="logo">Madrona&nbsp;Engine</p>
         </a>
-        <a href="https://github.com/shacklettbp/madrona" class="link">
-          GitHub
-        </a>
+        <div class="navbar-items">
+          <a href="#paper" class="link">
+            Paper
+          </a>
+          <a href="https://github.com/shacklettbp/madrona" class="link">
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="video">
-      <p>VIDEO GOES HERE</p>
-    </div>
-    <div class="content">
+    <section id="video">
+      <div id="main-video-container">
+          <video autoplay muted width="800">
+              <source src="zoomout.mp4" type="video/mp4" />
+          </video>
+          <button class="replay">&#x21BB;</button>
+      </div>
+    </section>
 
+    <section id="intro" class="content">
       <h1>About the Engine</h1>
       <p class="blurb">The Engine does cool GPU stuff.</p>
-    </div>
+    </section>
 
+    <section id="paper" class="content">
+      <h1>Research Paper</h1>
+      <h2>An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation</h2>
+      <h3>Overview:</h3>
+      <p class="blurb">
+      We published a technical paper on the Madrona Engine in Transactions on Graphics 2023 (presented at SIGGRAPH 2023).<br>You can find a copy of the paper <a href="shacklett_siggraph23.pdf">here on this website</a> or at the <a href="https://dl.acm.org/doi/10.1145/3592427">ACM Digital Library</a>.
+      </p>
+
+      <h3>Abstract:</h3>
+      <p>
+        Training AI agents to perform complex tasks in simulated worlds requires millions to billions of steps of experience. To achieve high performance, today's fastest simulators for training AI agents adopt the idea of batch simulation: using a single simulation engine to simultaneously step many environments in parallel. We introduce a framework for productively authoring novel training environments (including custom logic for environment generation, environment time stepping, and generating agent observations and rewards) that execute as high-performance, GPU-accelerated batched simulators. Our key observation is that the entity-component-system (ECS) design pattern, popular for expressing CPU-side game logic today, is also well-suited for providing the structure needed for high-performance batched simulators. We contribute the first fully-GPU accelerated ECS implementation that natively supports batch environment simulation. We demonstrate how ECS abstractions impose structure on a training environment's logic and state  that allows the system to efficiently manage state, amortize work, and identify GPU-friendly coherent parallel computations within and across different environments. We implement several learning environments in this framework, and demonstrate GPU speedups of two to three orders of magnitude over open source CPU baselines and 5-33× over strong baselines running on a 32-thread CPU.  An implementation of the OpenAI hide and seek 3D environment written in our framework, which performs rigid body physics and ray tracing in each simulator step, achieves over 1.9&nbsp;million environment steps per second on a single GPU.
+      </p>
+
+      <h3>Authors:</h3>
+      <ul>
+          <li><a href="https://cs.stanford.edu/~bps">Brennan Shacklett</a></li>
+          <li><a href="https://www.linkedin.com/in/luc-rosenzweig/">Luc Guy Rosenzweig</a></li>
+          <li><a href="https://zhiqiangxie.com/">Zhiqiang Xie</a></li>
+          <li><a href="https://scholar.google.com/citations?user=wr9RgmcAAAAJ&hl=en">Bidipta Sarkar</a></li>
+          <li><a href="https://www.andrewszot.com/">Andrew Szot</a></li>
+          <li><a href="https://wijmans.xyz/">Erik Wijmans</a></li>
+          <li><a href="http://vladlen.info/">Vladlen Koltun</a></li>
+          <li><a href="https://faculty.cc.gatech.edu/~dbatra/">Dhruv Batra</a></li>
+          <li><a href="http://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian</a></li>
+      </ul>
+      <h3>Citation:</h3>
+      <p>
+      If you use Madrona in a research project, please use the following citation:
+
+      @article{shacklett23madrona,
+        title   = {An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation},
+        author  = {Brennan Shacklett and Luc Guy Rosenzweig and Zhiqiang Xie and Bidipta Sarkar and Andrew Szot and Erik Wijmans and Vladlen Koltun and Dhruv Batra and Kayvon Fatahalian},
+        journal = {ACM Trans. Graph.},
+        volume = {42},
+        number = {4},
+        year    = {2023}
+      }
+      </p>
+
+    </section>
+
+    <script src="main.js"></script>
   </body>
 </html>
