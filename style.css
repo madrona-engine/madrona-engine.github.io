@@ -9,7 +9,7 @@ body {
   font-weight: 300;
   font-size: 1.1em;
   max-width: 1500px;
-  min-width: 800px;
+  min-width: 850px;
   color: #071D28;
   border-color: #071D28;
   margin-left: auto;
@@ -136,7 +136,7 @@ pre {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 10px 125px 0px 125px;
+  margin: 10px 8% 0px 8%;
 }
 
 .no-top-margin {
@@ -187,7 +187,6 @@ pre {
   font-weight: 300;
   font-size: 2.2em;
   color: #071D28;
-  /*background-color: #98C95F;*/
   background-color: #7ad869;
   border-radius: 10px;
   padding: 5px 20px;
@@ -245,7 +244,7 @@ pre {
 }
 
 .info-section p.paper-abstract {
-  font-size: 0.985em;
+  font-size: 0.980em;
 }
 
 .paper-block {
@@ -276,6 +275,7 @@ pre {
 #paper-download {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   font-family: 'Noto Sans', sans-serif;
 }
 
