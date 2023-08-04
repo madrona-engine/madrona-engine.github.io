@@ -334,3 +334,7 @@ a.paper-title:hover {
   padding: 10px 30px;
   border-radius: 10px;
 }
+
+:target {
+    scroll-margin-top: 50px;
+}
