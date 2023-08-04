@@ -136,7 +136,7 @@ pre {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 25px 125px 0px 125px;
+  margin: 10px 125px 0px 125px;
 }
 
 .no-top-margin {
