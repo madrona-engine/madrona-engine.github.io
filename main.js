@@ -14,7 +14,7 @@ replay_button.addEventListener("click", () => {
 
 const nav_height = document.querySelector(".madrona-nav-wrapper").offsetHeight;
 
-function scrollToDiv(tgt) {
+function scrollToDiv(tgt, smooth = true) {
     const elem = document.querySelector(tgt);
     if (!elem) {
         return;
@@ -24,14 +24,14 @@ function scrollToDiv(tgt) {
     const total_offset = tgt_offset - nav_height;
     window.scrollBy({
         top: total_offset,
-        behavior: 'smooth'
+        behavior: smooth ? 'smooth' : 'instant',
     });
 }
 
-function handleHashChange() {
+function handleHashLoad() {
     const cur_hash = window.location.hash;
     if (cur_hash) {
-        scrollToDiv(cur_hash);
+        scrollToDiv(cur_hash, true);
     }
 }
 
@@ -56,5 +56,4 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
 });
 
-window.addEventListener("hashchange", handleHashChange);
-window.addEventListener("load", handleHashChange);
+window.addEventListener("load", handleHashLoad);
