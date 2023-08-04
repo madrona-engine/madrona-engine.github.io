@@ -28,6 +28,13 @@ function scrollToDiv(tgt) {
     });
 }
 
+function handleHashChange() {
+    const cur_hash = window.location.hash;
+    if (cur_hash) {
+        scrollToDiv(cur_hash);
+    }
+}
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
     const href = link.getAttribute('href');
     
@@ -44,6 +51,10 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             scrollToDiv(href);
+            window.history.pushState({}, "", href);
         });
     }
 });
+
+window.addEventListener("hashchange", handleHashChange);
+window.addEventListener("load", handleHashChange);
