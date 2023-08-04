@@ -13,7 +13,7 @@
     <div class='madrona-nav-wrapper'>
       <div class='madrona-nav'>
         <a href='#'>
-          <img src='madrona_simple.png' width='100' />
+          <img src='madrona_simple.png' width='50' />
           <span class='logo'>Madrona&nbsp;Engine</span>
         </a>
         <div class='madrona-nav-items'>
@@ -43,7 +43,6 @@
     </section>
 
     <section id='intro' class='info-section'>
-      <h1>About the Engine</h1>
       <div class='content'>
         <p class='detail blurb'>
           Madrona is a prototype game engine for creating high-throughput, GPU-accelerated batch simulators: simulators that generate millions of aggregate simulation steps per second by running thousands of virtual environment instances in parallel on a single GPU. The core goal of the engine is to provide orders of magnitude speedups for AI agent training (and other applications needing large amounts of simulated experience) by enabling researchers to build new high-performance simulators across a wide range of tasks.
@@ -58,16 +57,16 @@
     <section id='paper' class='info-section'>
       <h1>Technical Paper</h1>
       <div class='content'>
-        <h2><span class='underline'>Overview</span></h2>
+        <h3>Overview</h3>
         <p class='detail'>
            For an in-depth description of the core engine implementation details and initial performance results and analyis, refer to our technical paper on the engine:
         </p>
 
         <div class='paper-block'>
           <div class='paper-title-wrapper'>
-            <div class='paper-title underline'>
-              An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation
-            </div>
+            <a class='paper-title underline' href='shacklett_siggraph23.pdf' target='_blank'>
+                An Extensible, Data-Oriented Architecture for High-Performance, Many-World Simulation
+            </a>
           </div>
           <div class='paper-details-wrapper'>
             <div id='paper-details' class='paper-details'>
@@ -90,18 +89,18 @@
             </div>
             <div id='paper-download'>
               <a href='shacklett_siggraph23.pdf' target='_blank'>
-                <span href='shacklett_siggraph23.pdf' target='_blank' class='pdf-download-icon material-symbols-outlined'>description</span><div class='pdf-download-text'>PDF</div>
+                <span class='pdf-download-icon material-symbols-outlined'>description</span><div class='pdf-download-text'>PDF</div>
               </a>
             </div>
           </div>
         </div>
 
-        <h2><span class='underline'>Abstract</span></h2>
+        <h3>Abstract</h3>
         <p class='detail paper-abstract'>
         Training AI agents to perform complex tasks in simulated worlds requires millions to billions of steps of experience. To achieve high performance, today's fastest simulators for training AI agents adopt the idea of batch simulation: using a single simulation engine to simultaneously step many environments in parallel. We introduce a framework for productively authoring novel training environments (including custom logic for environment generation, environment time stepping, and generating agent observations and rewards) that execute as high-performance, GPU-accelerated batched simulators. Our key observation is that the entity-component-system (ECS) design pattern, popular for expressing CPU-side game logic today, is also well-suited for providing the structure needed for high-performance batched simulators. We contribute the first fully-GPU accelerated ECS implementation that natively supports batch environment simulation. We demonstrate how ECS abstractions impose structure on a training environment's logic and state  that allows the system to efficiently manage state, amortize work, and identify GPU-friendly coherent parallel computations within and across different environments. We implement several learning environments in this framework, and demonstrate GPU speedups of two to three orders of magnitude over open source CPU baselines and 5x &mdash; 33x over strong baselines running on a 32-thread CPU.  An implementation of the OpenAI hide and seek 3D environment written in our framework, which performs rigid body physics and ray tracing in each simulator step, achieves over 1.9&nbsp;million environment steps per second on a single GPU.
         </p>
 
-        <h2><span class='underline'>Citation</span></h2>
+        <h3>Citation</h3>
         <pre class='citation'><code>@article{shacklett23madrona,
     title   = {An Extensible, Data-Oriented Architecture for
                High-Performance, Many-World Simulation},

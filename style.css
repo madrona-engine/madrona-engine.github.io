@@ -61,8 +61,8 @@ pre {
   background-color: #98C95F;
   background-color: #7ad869;
   border-radius: 15px;
-  padding: 10px 30px;
-  margin-top: 5px;
+  padding: 0px 30px;
+  margin-top: 2px;
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 0px;
@@ -80,7 +80,7 @@ pre {
   font-family: JetBrains Mono, Arial;
   font-weight: 800;
   font-size: 36pt;
-  margin: 10px;
+  margin: 0px 10px;
   color: #071D28;
 }
 
@@ -89,18 +89,22 @@ pre {
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-items: top;
   font-size: 16pt;
   font-weight: 300;
 }
 
 .madrona-nav-items a {
-  margin: 10px;
+  margin: 5px;
   background-color: #89e778;
   border-style: solid;
   border-color: #a5f796;
   border-radius: 15px;
-  height: 30px;
+  height: 20px;
+  width: 60px;
   padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .madrona-nav-items a.link:hover {
@@ -117,12 +121,16 @@ pre {
   margin: 25px 125px 0px 125px;
 }
 
+.no-top-margin {
+  margin-top: 0px;
+}
+
 .content {
   margin-left: 25px;
 }
 
 #video {
-  margin-top: 135px;
+  margin-top: 39px;
 }
 
 #main-video-container {
@@ -227,7 +235,7 @@ pre {
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #a8eda6;
+  background-color: #f2f2f2;
   border-radius: 10px;
   padding: 15px 20px 15px 20px;
   margin-top: 15px;
@@ -272,10 +280,20 @@ pre {
   margin-bottom: 16px;
 }
 
-.paper-title {
+a.paper-title {
   display: inline-block;
   font-size: 1.4em;
   padding-bottom: 5px;
+  color: #071D28;
+}
+
+a.paper-title:visited {
+  color: #071D28;
+}
+
+a.paper-title:hover {
+  color: #c46a27;
+  border-color: #071D28;
 }
 
 .authors {
