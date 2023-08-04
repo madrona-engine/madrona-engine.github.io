@@ -58,10 +58,9 @@ pre {
   justify-content: space-between;
   flex-grow: 1;
   overflow: hidden;
-  background-color: #98C95F;
   background-color: #7ad869;
   border-radius: 15px;
-  padding: 0px 30px;
+  padding: 0px 20px;
   margin-top: 2px;
   margin-left: 5px;
   margin-right: 5px;
@@ -111,6 +110,20 @@ pre {
   color: #c46a27;
   background-color: #add97a;
   border-color: #cce9a9;
+}
+
+.madrona-nav-items a.gh {
+  background-color: #7ad869;
+  border-style: none;
+  width: 50px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.madrona-nav-items a.gh img {
+  width: 40px;
 }
 
 /* Style the site content */
