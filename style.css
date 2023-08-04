@@ -126,6 +126,11 @@ pre {
   width: 40px;
 }
 
+.madrona-nav-items a.gh:hover img {
+  width: 40px;
+  filter: opacity(80%);
+}
+
 /* Style the site content */
 .info-section {
   display: flex;
