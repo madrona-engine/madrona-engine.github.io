@@ -185,7 +185,7 @@ pre {
 .info-section h1 {
   font-family: Roboto, Arial;
   font-weight: 300;
-  font-size: 2.2em;
+  font-size: 1.5em;
   color: #071D28;
   background-color: #7ad869;
   border-radius: 10px;
@@ -250,7 +250,7 @@ pre {
 .paper-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   flex-wrap: wrap;
   background-color: #f2f2f2;
   border-radius: 10px;
@@ -295,13 +295,13 @@ pre {
 }
 
 .paper-title-wrapper {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 a.paper-title {
   display: inline-block;
-  font-size: 1.4em;
   padding-bottom: 5px;
+  font-weight: bold;
   color: #071D28;
 }
 
@@ -316,7 +316,6 @@ a.paper-title:hover {
 
 .authors {
   margin-left: 10px;
-  font-size: 1.2em;
   padding-bottom: 6px;
 }
 
@@ -324,7 +323,6 @@ a.paper-title:hover {
   margin: 0px;
   margin-top: 5px;
   margin-left: 10px;
-  font-size: 1.15em;
 }
 
 .citation {
