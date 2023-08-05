@@ -41,6 +41,11 @@ pre {
   font-weight: 300;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 .madrona-nav-wrapper {
   position: fixed;
   display: flex;
@@ -130,6 +135,8 @@ pre {
   width: 40px;
   filter: opacity(80%);
 }
+
+
 
 /* Style the site content */
 .info-section {
@@ -241,6 +248,16 @@ pre {
 
 .info-section p.detail:first-of-type {
   margin-top: 0px;
+}
+
+.resources-list {
+  margin-top: 5px;
+  margin-left: 60px;
+  margin-right: 20px;
+}
+
+.resources-list li {
+  padding-top: 4px;
 }
 
 .info-section p.paper-abstract {
