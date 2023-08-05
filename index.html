@@ -45,7 +45,7 @@
     <section id='intro' class='info-section'>
       <div class='content'>
         <p class='detail blurb'>
-          Madrona is a prototype game engine for creating high-throughput, GPU-accelerated batch simulators: simulators that generate millions of aggregate simulation steps per second by running thousands of virtual environment instances in parallel on a single GPU. The core goal of the engine is to provide orders of magnitude speedups for AI agent training (and other applications needing large amounts of simulated experience) by enabling researchers to build new high-performance simulators across a wide range of tasks.
+        Madrona is a research game engine designed specifically for creating virtual environment simulators that achieve extremely high throughput (millions of aggregate steps per second) by running thousands of independent instances of an environment concurrently on a single GPU.  Madrona's goal is to enable orders of magnitude speedups for AI agent training (and other applications needing large amounts of simulated experience) by making it easier for researchers to build new high-performance simulators for a wide range of tasks.
         </p>
         <p class='detail blurb'>
         For more information, read <a href='#'>the blog post introducing the engine</a>, <a href='#'>a blog on building an Overcooked batch simulator using Madrona</a>, visit <a href='https://github.com/shacklettbp/madrona'>our GitHub repo</a>, or <a href='#paper-details'>read the paper</a>.
@@ -57,7 +57,6 @@
     <section id='paper' class='info-section'>
       <h1>Technical Paper</h1>
       <div class='content'>
-        <h3>Overview</h3>
         <p class='detail'>
            For an in-depth description of the core engine implementation details and initial performance results and analyis, refer to our technical paper on the engine:
         </p>
@@ -121,16 +120,12 @@
       <div class='content'>
         <h3>What tasks does Madrona support?</h3>
         <p class='detail'>
-        Madrona is a game engine / framework for implementing new batch simulators, not a batch simulator itself. The goal of Madrona is to make implementing new, highly performant batch simulators as easy as possible, so machine learning researchers do not need to choose between a handful of highly optimized simulators for a few tasks or relying on training agents in existing game engines that are often orders of magnitude slower.
-        </p>
-        <p class='detail'>
-        For a list of simulators built with Madrona at time of release, refer to the <a href='https://github.com/shacklettbp/madrona#example-madrona-based-simulators'>Madrona GitHub README</a>.
+        Madrona is not an RL environment simulator. It is a game engine / framework that makes it easier for developers (like RL researchers) to implement their own new environment simulators that achieve high performance by running on GPUs. For example, instead of creating your own new environment simulator in an existing game engine like Unity or Unreal, you might consider building it in Madrona to achieve much higher performance. For a list of simulators built with Madrona at time of release, refer to the <a href='https://github.com/shacklettbp/madrona#example-madrona-based-simulators'>Madrona GitHub README</a>.
         </p>
 
-        <h3>I have a large non-batch simulator written in Python. What is the easiest way to port it to Madrona?</h3>
+        <h3>I have a large simulator written in Python. What is the easiest way to port it to Madrona?</h3>
         <p class='detail'>
-        Please read <a href='#'>Bidipta Sarkar's blog post on porting the Overcooked AI environment to Madrona</a>. That post describes exactly the process of extracting the core simulation logic from a large Python code base and re-implementing it within Madrona's C++ APIs.
-        </p>
+        At this time Madrona requires game logic to be written in C++, so using Madrona will require porting this logic to C++ and organizing your game state to use entity-components design.  Bidipta Sarkar's has a <a href='#'>great post</a> on porting the Overcooked AI environment to Madrona. That post describes the process of extracting the core simulation logic from a large Python code base and re-implementing it using Madrona's C++ APIs. A trivial port of Overcooked was done in only a few days, and increased Overcooked simulator performance by over 1000X.  The Madrona github repo also contains linked to sample projects that 
 
         <h3>Can I use Madrona while keeping parts of my simulator (for example reward functions) in Python?</h3>
         <p class='detail'>
