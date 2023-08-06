@@ -147,12 +147,6 @@ ul {
   margin: 10px 8% 0px 8%;
 }
 
-@media only screen and (max-width: 600px) {
-  .info-section {
-    margin: 10px 2% 0px 2%;
-  }
-}
-
 .no-top-margin {
   margin-top: 0px;
 }
@@ -430,4 +424,31 @@ a.paper-title:hover {
 
 .blog-section p:first-of-type {
   margin-top: 0px;
+}
+
+@media only screen and (max-width: 600px) {
+  .info-section, .blog {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  body, p, a.paper-title, .blurb {
+    font-size: 1.3em;
+  }
+
+  pre, .info-section p.paper-abstract {
+    font-size: 1.2em;
+  }
+
+  .info-section h1, .blog-section h1 {
+    font-size: 1.7em;
+  }
+
+  .info-section h2, .blog-section h2 {
+    font-size: 1.55em;
+  }
+
+  .info-section h3, .blog-section h3 {
+    font-size: 1.45em;
+  }
 }
