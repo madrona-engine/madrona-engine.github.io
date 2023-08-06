@@ -452,26 +452,22 @@ a.paper-title:hover {
   }
 
   body, p, a.paper-title, .blurb {
-    font-size: 1.35em;
+    font-size: 1.3em;
   }
 
   pre, .info-section p.paper-abstract {
-    font-size: 1.25em;
-  }
-
-  .info-section p, .blog-section p {
-    line-height: 1.55;
+    font-size: 1.2em;
   }
 
   .info-section h1, .blog-section h1 {
-    font-size: 1.75em;
+    font-size: 1.7em;
   }
 
   .info-section h2, .blog-section h2 {
-    font-size: 1.6em;
+    font-size: 1.55em;
   }
 
   .info-section h3, .blog-section h3 {
-    font-size: 1.5em;
+    font-size: 1.45em;
   }
 }
