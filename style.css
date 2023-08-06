@@ -51,7 +51,7 @@ ul {
 }
 
 .madrona-nav-wrapper {
-  position: fixed;
+  position: sticky;
   display: flex;
   top: 0;
   z-index: 999;
@@ -156,7 +156,7 @@ ul {
 }
 
 #video {
-  margin-top: 69px;
+  margin-top: 4px;
   margin-bottom: 10px;
 }
 
@@ -204,8 +204,8 @@ ul {
   filter: opacity(70%);
 }
 
-#main-video-container .replay img:hover {
-  filter: opacity(50%);
+#main-video-container .replay:hover {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .info-section h1 {
@@ -373,7 +373,7 @@ a.paper-title:hover {
 
 .blog {
     margin-left: 5px;
-    margin: 65px 8% 0px 8%;
+    margin: 0px 8% 0px 8%;
 }
 
 .blog .title {
