@@ -368,6 +368,7 @@ a.paper-title:hover {
   background-color: #EEEEEE;
   padding: 10px 30px;
   border-radius: 10px;
+  font-size: 10pt;
 }
 
 .blog {
@@ -473,5 +474,9 @@ a.paper-title:hover {
 
   .info-section h3, .blog-section h3 {
     font-size: 1.5em;
+  }
+  
+  .citation {
+    font-size: 10pt;
   }
 }
