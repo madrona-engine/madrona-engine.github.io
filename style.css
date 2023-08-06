@@ -162,7 +162,7 @@ ul {
 }
 
 #video {
-  margin-top: 39px;
+  margin-top: 69px;
 }
 
 #main-video-container {
@@ -170,14 +170,19 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 125px;
-  margin-top: 30px;
+  padding: 0px 8%;
+  width: 800px;
+  height: 450px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #main-video-container video {
   max-width: 100%;
   padding: 0;
   margin: 0;
+  width: 800px;
+  height: 450px;
 }
 
 #main-video-container .replay {
