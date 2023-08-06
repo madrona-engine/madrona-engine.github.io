@@ -146,8 +146,8 @@ ul {
   margin: 10px 8% 0px 8%;
 }
 
-@media screen and (max-width: 800px) {
-  margin: 10px 2% 0px 2%;
+@media only screen and (max-width: 600px) {
+  margin: 10px 0px 0px 0px;
 }
 
 .no-top-margin {
