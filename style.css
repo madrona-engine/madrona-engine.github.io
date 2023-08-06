@@ -18,6 +18,10 @@ body {
   margin-bottom: 20px;
 }
 
+:target {
+    scroll-margin-top: 50px;
+}
+
 a, a:visited {
   text-decoration: none;
   color: #1c668c;
@@ -136,9 +140,6 @@ ul {
   filter: opacity(80%);
 }
 
-
-
-/* Style the site content */
 .info-section {
   display: flex;
   flex-direction: column;
@@ -355,6 +356,54 @@ a.paper-title:hover {
   border-radius: 10px;
 }
 
-:target {
-    scroll-margin-top: 50px;
+.blog-section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 10px 8% 0px 8%;
+}
+
+.blog-section h1 {
+  font-family: Roboto, Arial;
+  font-weight: 300;
+  font-size: 1.5em;
+  color: #071D28;
+  background-color: #7ad869;
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog-section h2 {
+  font-weight: 400;
+  font-size: 1.35em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.blog-section h2:first-child {
+  margin-top: 0px;
+}
+
+.blog-section h3 {
+  font-weight: 400;
+  font-size: 1.25em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.blog-section h3:first-child {
+  margin-top: 0px;
+}
+
+.blog-section p {
+  line-height: 1.3;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.blog-section p:first-of-type {
+  margin-top: 0px;
 }
