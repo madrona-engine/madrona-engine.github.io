@@ -146,6 +146,10 @@ ul {
   margin: 10px 8% 0px 8%;
 }
 
+@media screen and (max-width: 800px) {
+  margin: 10px 2% 0px 2%;
+}
+
 .no-top-margin {
   margin-top: 0px;
 }
@@ -243,7 +247,6 @@ ul {
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  text-align: justify;
 }
 
 .info-section p.detail:first-of-type {
