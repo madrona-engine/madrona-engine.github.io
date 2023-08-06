@@ -370,59 +370,78 @@ a.paper-title:hover {
   border-radius: 10px;
 }
 
-.blog-title {
-    margin-top: 75px;
+.blog {
+    margin-left: 5px;
+    margin: 65px 8% 0px 8%;
 }
 
-.blog-section {
+.blog .title {
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin: 10px 8% 0px 8%;
+  color: #071D28;
 }
 
-.blog-section h1 {
+.blog .title-bg {
+  background-color: #a9f09d;
+  border-radius: 0 0 10px 10px;
+  padding: 15px 20px 15px 20px;
+}
+
+.blog .title h1 {
+  font-weight: 400;
+  font-size: 1.75em;
+}
+
+.blog .title p {
+  margin-top: 5px;
+  margin-left: 22px;
+}
+
+.blog section {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.blog section h1 {
   font-family: Roboto, Arial;
   font-weight: 300;
   font-size: 1.5em;
-  color: #071D28;
-  background-color: #7ad869;
-  border-radius: 10px;
-  padding: 5px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.blog-section h2 {
+.blog section h2 {
   font-weight: 400;
   font-size: 1.35em;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.blog-section h2:first-child {
+.blog section h2:first-child {
   margin-top: 0px;
 }
 
-.blog-section h3 {
+.blog section h3 {
   font-weight: 400;
   font-size: 1.25em;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.blog-section h3:first-child {
+.blog section h3:first-child {
   margin-top: 0px;
 }
 
-.blog-section p {
+.blog section p {
   line-height: 1.3;
   margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
-.blog-section p:first-of-type {
+.blog section p:first-of-type {
   margin-top: 0px;
 }
 
