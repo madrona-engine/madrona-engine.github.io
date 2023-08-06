@@ -162,7 +162,7 @@ ul {
 }
 
 #video {
-  margin-top: 39px;
+  margin-top: 5.1%;
 }
 
 #main-video-container {
@@ -171,7 +171,6 @@ ul {
   flex-direction: column;
   align-items: center;
   padding: 0px 125px;
-  margin-top: 30px;
 }
 
 #main-video-container video {
