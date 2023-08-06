@@ -196,7 +196,7 @@ ul {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 8px;
-  padding: 15px;
+  padding: 18px;
   font-size: 30pt;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
@@ -206,11 +206,12 @@ ul {
 }
 
 #main-video-container .replay img {
-  width: 30px;
+  width: 25px;
+  filter: opacity(70%);
 }
 
 #main-video-container .replay img:hover {
-  filter: opacity(80%);
+  filter: opacity(50%);
 }
 
 .info-section h1 {
