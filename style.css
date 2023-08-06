@@ -334,6 +334,7 @@ a.paper-title:hover {
 
 .authors {
   margin-left: 10px;
+  line-height: 150%;
   padding-bottom: 6px;
 }
 
