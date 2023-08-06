@@ -360,6 +360,10 @@ a.paper-title:hover {
   border-radius: 10px;
 }
 
+.blog-title {
+    margin-top: 75px;
+}
+
 .blog-section {
   display: flex;
   flex-direction: column;
