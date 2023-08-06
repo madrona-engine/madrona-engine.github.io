@@ -171,8 +171,8 @@ ul {
   flex-direction: column;
   align-items: center;
   padding: 0px 8%;
-  width: 800px;
-  height: 450px;
+  width: 720px;
+  height: 405px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -181,8 +181,8 @@ ul {
   max-width: 100%;
   padding: 0;
   margin: 0;
-  width: 800px;
-  height: 450px;
+  width: 720px;
+  height: 405px;
 }
 
 #main-video-container .replay {
