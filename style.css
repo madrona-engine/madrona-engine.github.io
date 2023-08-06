@@ -417,9 +417,8 @@ a.paper-title:hover {
 
 .blog section h2 {
   font-weight: 400;
-  font-size: 1.35em;
+  font-size: 1.25em;
   margin-top: 20px;
-  margin-bottom: 10px;
 }
 
 .blog section h2:first-child {
