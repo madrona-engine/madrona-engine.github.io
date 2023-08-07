@@ -474,6 +474,15 @@ a.paper-title:hover {
 }
 
 @media only screen and (max-width: 480px) {
+  .madrona-nav-items {
+    font-size: 16pt;
+    font-weight: 500;
+  }
+
+  .madrona-nav-items a {
+    padding: 10px 6px 10px 6px;
+  }
+
   .info-section, .blog {
     margin-left: 2%;
     margin-right: 2%;
