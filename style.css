@@ -449,7 +449,7 @@ a.paper-title:hover {
   margin-top: 0px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   .info-section, .blog {
     margin-left: 2%;
     margin-right: 2%;
