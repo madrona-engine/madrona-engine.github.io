@@ -456,7 +456,7 @@ a.paper-title:hover {
 }
 
 .blog li {
-  padding-top: 4px;
+  padding-top: 8px;
 }
 
 @media only screen and (max-width: 480px) {
