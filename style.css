@@ -92,6 +92,10 @@ ul {
   color: #071D28;
 }
 
+.madrona-nav a.logo-wrapper:hover {
+  filter: opacity(80%);
+}
+
 /* Style the navigation bar items */
 .madrona-nav-items {
   display: flex;
