@@ -407,6 +407,10 @@ a.paper-title:hover {
   margin-left: 20px;
 }
 
+.blog section:first-of-type{
+  margin-top: 20px;
+}
+
 .blog section h1 {
   font-family: Roboto, Arial;
   font-weight: 300;
@@ -427,9 +431,9 @@ a.paper-title:hover {
 
 .blog section h3 {
   font-weight: 400;
-  font-size: 1.25em;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  font-size: 1.15em;
+  margin-top: 15px;
+  margin-bottom: 2px;
 }
 
 .blog section h3:first-child {
