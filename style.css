@@ -503,7 +503,7 @@ a.paper-title:hover {
     font-size: 1.5em;
   }
 
-  .resources-list li {
+  .resources-list li, .blog li {
     font-size: 1.35em;
     padding-top: 15px;
   }
