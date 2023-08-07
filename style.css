@@ -402,6 +402,11 @@ a.paper-title:hover {
   padding: 15px 20px 15px 20px;
 }
 
+/* Specifies line break point in blog title */
+.blog .title-line {
+  display: inline-block;
+}
+
 .blog .title h1 {
   font-weight: 400;
   font-size: 1.75em;
