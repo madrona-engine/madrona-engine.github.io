@@ -449,7 +449,7 @@ a.paper-title:hover {
   margin-top: 0px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
   .info-section, .blog {
     margin-left: 2%;
     margin-right: 2%;
@@ -463,19 +463,19 @@ a.paper-title:hover {
     font-size: 1.25em;
   }
 
-  .info-section p, .blog-section p {
+  .info-section p, .blog section p {
     line-height: 1.55;
   }
 
-  .info-section h1, .blog-section h1 {
+  .info-section h1, .blog section h1 {
     font-size: 1.75em;
   }
 
-  .info-section h2, .blog-section h2 {
+  .info-section h2, .blog section h2 {
     font-size: 1.6em;
   }
 
-  .info-section h3, .blog-section h3 {
+  .info-section h3, .blog section h3 {
     font-size: 1.5em;
   }
 
