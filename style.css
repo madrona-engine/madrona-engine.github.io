@@ -520,4 +520,8 @@ a.paper-title:hover {
   .citation {
     font-size: 10pt;
   }
+
+  .blog section {
+    margin-top: 15px;
+  }
 }
