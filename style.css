@@ -377,8 +377,8 @@ a.paper-title:hover {
 
 /* Must come after .madrona-nav-wrapper for precedence to work correctly */
 .blog-background {
-  /*background-color: #e7ffe4;*/
-  background-color: #FFFFFF;
+  background-color: #e7ffe4;
+  /*background-color: #FFFFFF;*/
 }
 
 .blog {
