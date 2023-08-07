@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Madrona Engine</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains+Mono' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+
+  <body>
+    <div class='madrona-nav-wrapper'>
+      <div class='madrona-nav'>
+        <a href='#'>
+          <img src='madrona_simple.png' width='50' />
+          <span class='logo'>Madrona&nbsp;Engine</span>
+        </a>
+        <div class='madrona-nav-items'>
+          <a href='#paper' class='link'>
+            Paper
+          </a>
+          <a href='#faq' class='link'>
+            FAQ 
+          </a>
+          <!-- <a href='#' class='link'>
+            Blog
+          </a> -->
+          <a href='https://github.com/shacklettbp/madrona' class='gh'>
+            <img src='github-mark.svg' alt='GitHub' />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class='blog'>
+      <div id='title' class='title'>
+        <div class='title-bg'>
+          <h1>Madrona v0.1: A Game Engine for Training Agents</h1> 
+          <p>Posted on Sunday, August 6th by <a href='https://cs.stanford.edu/~bps'>Brennan Shacklett</a></p>
+        </div>
+      </div>
+      <section id='intro'>
+        <p>
+        After about a year of work, I'm happy to announce the initial release of the Madrona Engine. Madrona is a new type of game engine designed from the ground up for the unique workload of training agents using algorithms like reinforcement learning. What does that mean specifically? Learning environments built on Madrona are able to simulate batches of thousands of environments simultaneously <em>by default</em> enabling high-throughput experience generation for learning. This is in contrast to existing game engines that are designed to execute a single game instance at real-time rates. By treating parallel batch execution of many environments as a first class notion in the engine, Madrona is able to map this parallel workload entirely onto the GPU and achieve order of magnitude speedups over CPU execution.
+        </p>
+        <p>
+        For machine learning researchers, the massive speedups enabled by Madrona's architecture result in very tangible changes to learning workflows. For example, my colleague <a href='https://bsarkar321.github.io/'>Bidipta Sarkar</a> ported the <a href="https://github.com/HumanCompatibleAI/overcooked_ai">Overcooked AI</a> environment to Madrona and achieved a <strong>60x</strong> speedup to end-to-end training. Concretely, his training runs dropped from over an hour to under a minute! In fact, you can use this <a href='https://colab.research.google.com/github/bsarkar321/madrona_rl_envs/blob/master/overcooked_compiled_colab.ipynb'>Colab notebook</a> to train Overcooked agents on a free GPU in just a couple minutes. Overall, these kind of speedups significantly improve research iteration times and open up new algorithmic possibilities. I highly recommend reading Bidipta's <a href="https://bsarkar321.github.io/blog/overcooked_madrona/index.html">blog post</a> for a detailed account of the impact on his research as well as the nitty gritty technical details of porting Overcooked AI to Madrona and optimizing it.
+        </p>
+      </section>
+
+      <section id='ecs'>
+      </section>
+    </div>
+  </body>
+</html>
