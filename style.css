@@ -272,6 +272,11 @@ ul {
   margin-top: 0px;
 }
 
+.info-section p.detail.small {
+  font-size: .8em;
+  font-style: italic;
+}
+
 .resources-list {
   margin-top: 5px;
   margin-left: 60px;
