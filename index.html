@@ -40,6 +40,7 @@
           <source src='zoomout.mp4' type='video/mp4' />
         </video>
         <button class='replay'><img src='replay.svg' alt='replay'></button>
+      <p class="small">Environments implemented using Madrona execute efficiently via large batch execution on the GPU. Here are 32,000 independent "Hide and Seek" envrionments executing concurrently.</p>
       </div>
     </section>
 
@@ -172,7 +173,7 @@
         <h3>I have an existing environment simulator written in Python. What is the easiest way to port it to Madrona?</h3>
 
         <p class='detail'>
-        At this time Madrona requires game logic to be written in C++, so using Madrona will require porting this logic to C++ and re-organizing your game state to leverage the entity component system architecture. Bidipta Sarkar has a <a href='https://bsarkar321.github.io/blog/overcooked_madrona/index.html'>great post</a> on porting the <a href="https://github.com/HumanCompatibleAI/overcooked_ai">Overcooked-AI</a> environment to Madrona. That post describes the process of extracting the core simulation logic from a large Python code base and re-implementing it using Madrona's C++ APIs. A trivial port of Overcooked-AI was done in only a few days, and increased Overcooked-AI simulator performance by over 1000X.  The Madrona <a href="https://github.com/shacklettbp/madrona">github repo</a> also contains links to sample projects that can be used as starter code for creating new environments.
+        At this time Madrona requires game logic to be written in C++, so using Madrona will require porting this logic to C++ and re-organizing your game state to leverage the entity component system architecture. Bidipta Sarkar has a <a href='https://bsarkar321.github.io/blog/overcooked_madrona/index.html'>great post</a> on porting the <a href="https://github.com/HumanCompatibleAI/overcooked_ai">Overcooked-AI</a> environment to Madrona. That post describes the process of extracting the core simulation logic from a large Python code base and re-implementing it using Madrona's C++ APIs. A trivial port of Overcooked-AI was done in only a few days, and it increased simulator performance by over 1000X. The Madrona <a href="https://github.com/shacklettbp/madrona">github repo</a> also contains links to sample projects that can be used as starter code for creating new environments.
 
         <h3>Can I use Madrona while keeping parts of my simulator (e.g., reward functions) in Python?</h3>
 
