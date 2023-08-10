@@ -24,7 +24,7 @@
           <a href='#faq' class='link'>
             FAQ 
           </a>
-          <a href='/blog.html' class='link'>
+          <a href='blog.html' class='link'>
             Blog
           </a>
           <a href='https://github.com/shacklettbp/madrona' class='gh'>
@@ -40,7 +40,7 @@
           <source src='zoomout.mp4' type='video/mp4' />
         </video>
         <button class='replay'><img src='replay.svg' alt='replay'></button>
-      <p class="small">Environments implemented using Madrona execute efficiently via large batch execution on the GPU. Here are 32,000 independent "Hide and Seek" envrionments executing concurrently.</p>
+      <p class="small emph">Environments implemented using Madrona execute efficiently via large batch execution on the GPU. Here are 32,000 independent "Hide and Seek" environments executing concurrently.</p>
       </div>
     </section>
 
@@ -62,7 +62,7 @@
         <li><a href="https://github.com/shacklettbp/madrona_escape_room">Madrona Escape Room</a></li> 
         </ul>
         </p>
-        <p class="detail small">* Timings measured on a RTX 4090 GPU.</p>
+        <p class="detail small emph">* Timings measured on a RTX 4090 GPU.</p>
         </p>
 
         <p class='detail blurb'>
@@ -153,7 +153,7 @@
         <h3>What environments / tasks does Madrona support?</h3>
         
         <p class='detail'>
-        Madrona is not an RL environment simulator. It is a game engine / framework that makes it easier for developers (like RL researchers) to create their own environment simulators that achieve high throughput by running on GPUs. For example, instead of creating a new environment simulator using an existing game engine like Unity or Unreal, you might consider creating it using Madrona to achieve higher experience generation speed.
+        Madrona is not an RL environment simulator. It is a game engine / framework that makes it easier for developers (like RL researchers) to create their own custom learning environment simulators for their own custom tasks that achieve high throughput by running on GPUs. For example, instead of creating a new environment simulator using an existing game engine like Unity or Unreal, you might consider creating it using Madrona to achieve significantly higher experience generation throughput.
         </p>
         <p class='detail'">We try to maintain an updated list of environment simulators built with Madrona on the <a href='https://github.com/shacklettbp/madrona#example-madrona-based-simulators'>Madrona GitHub README</a>. If you've made your own environment using Madrona and want to share, let us know and we'll add it to the list.
         </p>
@@ -161,7 +161,7 @@
         <h3>My learning task requires simulation of complex dynamical systems in contact-rich settings. (I currently use MuJoCo or IsaacGym.) Is Madrona a good fit for my work?</h3>
 
         <p class="detail">
-          At the moment, probably not. Madrona currently provides a XPBD-based rigid body physics library for basic 3D collision and contact support. However, tasks that require advanced physics implementations (such as robotics manipulation tasks) are likely better off using other systems at this time. Hopefully in the future we can find ways to integrate libraries like <a href="https://mujoco.org/">MuJoCo</a> or <a href="https://developer.nvidia.com/isaac-gym">Isaac Gym</a> into Madrona by allowing them to communicate with the rest of the game engine using ECS structures. This would enable the development of new environments that are unconstrained in their custom game logic and also benefit from world-class physics simulation.
+          At the moment, probably not. Madrona currently provides a XPBD-based rigid body physics library for basic 3D collision and contact support. (This library is used by our 3D Hide and Seek and Escape Room example environments.) However, tasks that require advanced physics implementations (such as robotics manipulation tasks) are likely better off using other systems at this time. Hopefully in the future we can find ways to integrate libraries like <a href="https://mujoco.org/">MuJoCo</a> or <a href="https://developer.nvidia.com/isaac-gym">Isaac Gym</a> into Madrona by allowing them to communicate with the rest of the game engine using ECS structures. This would enable the development of new environments that are unconstrained in their custom game logic and also benefit from world-class physics simulation.
         </p>
 
         <h3>Does Madrona have rendering support? Can I use Madrona for training "pixels to actions" agents?</h3>
