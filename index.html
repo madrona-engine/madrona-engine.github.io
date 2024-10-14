@@ -70,6 +70,7 @@
         <ul class='resources-list'>
           <li><a href='https://github.com/shacklettbp/madrona'>Madrona GitHub repo</a></li>
           <li><a href='/blog.html'>Our short blog post introducing the engine</a></li>
+          <li><a href='/renderer.html'>Our short blog post introducing the engine's high-throughput batch renderer</a></li>
           <li><a href='https://bsarkar321.github.io/blog/overcooked_madrona/index.html'>Bidipta Sarkar's post on building an Overcooked-AI batch simulator using Madrona</a></li>
           <li><a href='#paper'>SIGGRAPH 2023 paper</a> about the Madrona engine</li>
           <li><a href="#faq">Madrona FAQ</a></li>
@@ -167,7 +168,8 @@
         <h3>Does Madrona have rendering support? Can I use Madrona for training "pixels to actions" agents?</h3>
 
         <p class='detail'>
-        Madrona currently has rendering support for visualization purposes only. While Madrona can simulate thousands of environments concurrently, the visualizer can only view a single environment at a time, and this output isn't exposed to PyTorch. Adding high-performance batch rendering support using ideas from our prior <a href='https://graphics.stanford.edu/projects/bps3D/'>bps3D project</a> is something we hope to do in the near future. Let us know if you have an immediate use case for it. The learning tasks we used as initial drivers of Madrona development involved agent policies that took internal game state to actions, so fast rendering has been lower priority for us.
+        Madrona currently has rendering support for both visualization purposes and "pixels to actions" training with a built-in high-throughput batch renderer. The visualizer can only visualize a single environment at a time, with this output not being exposed to Pytorch. However, the outputs from the batch renderer, which can render small images for each viewing agent in the simulation, can be exposed to PyTorch and used for training. For more information, see our <a href="/renderer.html">blog</a> introducing the renderers.
+
         </p>
 
 

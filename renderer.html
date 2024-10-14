@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Madrona Engine</title>
+    <meta charset='UTF-8'>
+    <link rel='icon' type='image/x-icon' href='favicon.ico'>
+    <meta name='viewport' content='width=device-width'>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains+Mono' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+
+  <body class='blog-background'>
+    <div class='madrona-nav-wrapper blog-background'>
+      <div class='madrona-nav'>
+        <a href='/' class='logo-wrapper'>
+          <img src='madrona_simple.png' width='50' />
+          <span class='logo'>Madrona&nbsp;Engine</span>
+        </a>
+        <div class='madrona-nav-items'>
+          <a href='/#paper' class='link'>
+            Paper
+          </a>
+          <a href='/#faq' class='link'>
+            FAQ 
+          </a>
+          <a href='/blog.html' class='link'>
+            Blog
+          </a>
+          <a href='https://github.com/shacklettbp/madrona' class='gh'>
+            <img src='github-mark.svg' alt='GitHub' />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class='blog'>
+
+      <div id='title' class='title'>
+        <div class='title-bg'>
+          <h1>
+            <span class='title-line'>Madrona v0.2: </span>
+            <span class='title-line'>Introducing the Engine's High Throughput Batch Renderer</span>
+          </h1> 
+          <p>Posted on Sunday, October 13th 2024 by <a href='https://www.linkedin.com/in/luc-rosenzweig/'>Luc Rosenzweig</a></p>
+        </div>
+      </div>
+
+    <section id='video'>
+      <div id='main-video-container'>
+        <video autoplay muted playsinline width='720' height='405' poster='thumbnail.jpg'>
+          <source src='renderer.mp4' type='video/mp4' />
+        </video>
+        <button class='replay'><img src='replay.svg' alt='replay'></button>
+      <p class="small emph">Example batch renderer outputs of high geometry scenes.</p>
+      </div>
+    </section>
+
+    <section id='intro'>
+      <p>
+      After the initial release of the engine, it has come to our attention that there is interest in having a high throughput batch renderer built into the engine for the purposes of "pixels to actions" training. We have therefore spent some time surveying what the best ways of integrating such a renderer would be into a batch simulator such as our own. We have therefore developed two implementations of such a renderer with both usable right now! Feel free to refer to our paper on the renderers for more of a technical deep dive into the designs and architectures which are in Madrona.
+
+     <p class='detail blurb'>
+     For more information, see the following resources:
+     <ul class='resources-list'>
+       <li><a href='https://github.com/llGuy/madrona_benchmark'>Benchmark Repository for Reproducing the Timings from the Paper</a></li>
+       <li><a href='https://github.com/llGuy/madrona_renderer'>Madrona Renderer (Standalone Batch Renderer which can be plugged into any Engine)</a></li>
+       <li><a href='https://github.com/llGuy/madrona_mjx'>Madrona MJX (Example of Using Madrona's Renderer with MJX)</a></li>
+          <li><a href="#render-faq">Madrona Renderer FAQ</a></li>
+     </ul>
+     </p>
+    </section>
+
+    <section id='paper' class='info-section'>
+      <h1>Renderer Technical Paper</h1>
+      <div class='content'>
+        <p class='detail'>
+           Please refer to our technical paper for an in-depth description of Madrona's batch renderer.
+        </p>
+
+        <div class='paper-block'>
+          <div class='paper-title-wrapper'>
+            <a class='paper-title' href='shacklett_siggraph23.pdf' target='_blank'>
+                High-Throughput Batch Rendering for Embodied AI
+            </a>
+          </div>
+          <div class='paper-details-wrapper'>
+            <div id='paper-details' class='paper-details'>
+              <div class='authors'>
+                <a href='https://www.linkedin.com/in/luc-rosenzweig/'>Luc&nbsp;Guy Rosenzweig</a>,
+                <a href='https://cs.stanford.edu/~bps'>Brennan&nbsp;Shacklett</a>,
+                <a href='https://www.linkedin.com/in/warren-xia-2a55641b6/'>Warren Xia</a>,
+                <a href='http://graphics.stanford.edu/~kayvonf/'>Kayvon&nbsp;Fatahalian</a>
+              </div>
+              <div class='conference'>
+                Proceedings of SIGGRAPH Asia 2024
+              </div>
+            </div>
+            <div id='paper-download'>
+              <a href='madrona-renderer.pdf' target='_blank'>
+                <span class='pdf-download-icon material-symbols-outlined'>description</span><div class='pdf-download-text'>PDF</div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h3>Abstract</h3>
+        <p class='detail paper-abstract'>
+          In this paper we study the problem of efficiently rendering images for embodied AI training workloads, where agent training involves rendering millions to billions of independent, low-resolution frames, often with simple lighting and shading, that serve as the agent's observations of the world. To enable high-throughput training from images, we design a flexible, batch-mode rendering interface that allows state-of-the-art GPU-accelerated batch world simulators to efficiently communicate with high-performance rendering backends. Using this interface we architect and compare two high-performance renderers: one based on the GPU hardware-accelerated graphics pipeline and a second based on a GPU software implementation of ray tracing. To evaluate these renderers and encourage further research by the graphics community in this area, we build a rendering benchmark for this under-explored regime. We find that the ray tracing renderer outperforms the rasterization-based solution across the benchmark on a datacenter-class GPU, while also performing competitively in geometrically complex environments on a high-end consumer GPU. When tasked to render large batches of independent 128x128 images, the ray tracer can exceed 100,000 frames per second per GPU for simple scenes, and exceed 10,000 frames per second per GPU on geometrically complex scenes from the HSSD dataset. 
+        </p>
+
+        <h3>Citation</h3>
+        <pre class='citation'><code>@article{shacklett23madrona,
+    title   = {High-Throughput Batch Rendering for Embodied AI},
+    author  = {Luc Guy Rosenzweig Brennan Shacklett and
+               Warren Xia and 
+               Kayvon Fatahalian},
+    conference = {SIGGRAPH Asia 2024 Conference Papers},
+    year    = {2024}
+}</code></pre>
+      </div>
+    </section>
+
+    <section id='render-faq' class='info-section'>
+      <h1>FAQ</h1>
+      <div class='content'>
+
+        <h3>Two renderers? Which should I use?</h3>
+
+        <p class='detail'>
+        We have two batch renderers implemented in Madrona currently: one based on hardware rasterization and the other based on software ray tracing. As for which one to use, we suggest that for most cases, using the software ray tracer would actually be better. This is for a couple reasons: it performs better on higher geometric complexity scenes, can support more complex effects like shadows and is way easier to use. The hardware rasterizer performs better on lower geometric complexity scenes like those in our Hide and Seek environment but is way harder to use on an API standpoint and effects like shadows would be basically impossible in any performant capacity.
+        </p>
+
+        <h3>How programmable is the ray tracer?</h3>
+
+        <p class='detail'>
+        Currently, the output of the ray tracer is hardcoded as you can see <a href="https://github.com/shacklettbp/madrona/blob/18268e97fa6fbc3c7f3760b871a1ec8dcf3b3000/src/mw/device/bvh_raycast.cpp#L784">here</a>. However, we plan to create a way for users to be able to program their own "ray tracing shaders" in the Madrona framework soon. For now however, we suggest just hardcoding modifications at the location linked previously.
+        </p>
+
+        <h3>I need a batch renderer for my non-Madrona application! How can I use your renderers for my use case?</h3>
+
+        <p class='detail'>
+        See the Madrona Renderer repository linked in the additional resources linked above the paper. There, you can see an example of just using the renderer which can be plugged into whatever application you like!
+        </p>
+
+      </div>
+    </section>
+
+    </div>
+  </body>
+</html>

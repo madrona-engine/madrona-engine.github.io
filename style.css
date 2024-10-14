@@ -421,6 +421,11 @@ a.paper-title:hover {
   font-size: 1.75em;
 }
 
+.blog .next-button p {
+  margin-top 5px;
+  margin-right: 22px;
+}
+
 .blog .title p {
   margin-top: 5px;
   margin-left: 22px;
