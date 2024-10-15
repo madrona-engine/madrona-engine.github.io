@@ -58,7 +58,11 @@
 
     <section id='intro'>
       <p>
-      Since the initial release of the engine, something that we've been eager to add to the engine was a high throughput batch renderer. After a couple months of work, we are happy to announce that the engine now features this! This means that Madrona can now support "pixels to actions" training where agents learn from what they see, allowing for a broader range of possible training regimes. Additionally, it is fast and can achieve framerates of about 300K FPS on simple scenes like Hide and Seek and 30K FPS on high geometric complexity scenes (about 7 million triangles per scene as seen in the video) on a RTX 4090 or H100. Feel free to refer to our renderer paper below for a technical deep dive into how we did it and a more detailed explanation of what is supported.
+
+      “Pixels to actions” training is an exciting training regime which has agents learning through images of what they see. Given that Madrona is a high-throughput batch simulator, we were compelled to explore what the most efficient architecture would be for a high-throughput batch renderer capable of rendering thousands of small images (64x64 to 256x256 in resolution) from the agents’ point of view.  Such a renderer would have different requirements than your typical renderer for a video game. For one, throughput is much more important than latency - it doesn’t matter if rendering a single 128x128 image takes 15ms so long as rendering 1024 images at once also takes 15ms. Furthermore, realism isn’t a hard requirement like it is in certain video games: learning experiments don’t require full path tracers and can make due with simple phong lighting as seen here.
+
+
+There are two established algorithms for image synthesis: rasterization and ray tracing.  We therefore explored both approaches with what we believe to be well-tuned implementations. Our findings show that the software ray tracer performs better than the rasterizer in many important situations such as training on an H100, on high geometry scenes or when in need of supporting effects like shadows.
 
      <p class='detail blurb'>
      For more information, see the following resources:
@@ -125,16 +129,10 @@
       <h1>FAQ</h1>
       <div class='content'>
 
-        <h3>It seems like there are two renderers? Which should I use?</h3>
-
-        <p class='detail'>
-        We have two batch renderers implemented in Madrona currently: one based on hardware rasterization and the other based on software ray tracing. As for which one to use, we suggest that for most cases, using the software ray tracer would actually be better. This is for a couple reasons: it performs better on higher geometric complexity scenes, can support more complex effects like shadows and is way easier to use. The hardware rasterizer performs better on lower geometric complexity scenes like those in our Hide and Seek environment but is way harder to use on an API standpoint and effects like shadows would be basically impossible in any performant capacity. Furthermore, if you're using an H100 or datacenter GPU for training, definitely use the ray tracer as the graphics hardware (which the rasterizer depends on) is orders of magnitude sloweron them.
-        </p>
-
         <h3>How programmable is the ray tracer?</h3>
 
         <p class='detail'>
-        Currently, the output of the ray tracer is hardcoded as you can see <a href="https://github.com/shacklettbp/madrona/blob/18268e97fa6fbc3c7f3760b871a1ec8dcf3b3000/src/mw/device/bvh_raycast.cpp#L784">here</a>. However, we plan to create a way for users to be able to program their own "ray tracing shaders" in the Madrona framework soon. For now however, we suggest just hardcoding modifications at the location linked previously.
+        Currently, the output of the ray tracer is hardcoded to RGB and depth with optional shadows as you can see <a href="https://github.com/shacklettbp/madrona/blob/18268e97fa6fbc3c7f3760b871a1ec8dcf3b3000/src/mw/device/bvh_raycast.cpp#L784">here</a>. However, we plan to create a way for users to program their own "ray tracing shaders" in the Madrona framework in the future. For now, users must hardcode modifications at the location linked previously.
         </p>
 
         <h3>I need a batch renderer for my non-Madrona application! How can I use your renderers for my use case?</h3>
