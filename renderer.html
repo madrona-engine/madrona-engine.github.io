@@ -68,11 +68,16 @@
 
     <section id='intro'>
       <p>
+“Pixels to actions” training involves agents learning to take actions based on rendered images of a virtual world. Given that Madrona is a high-throughput batch simulation architecture, we were compelled to also explore the question of how to architect a high throughput, batch rendering architecture that could efficiently interoperate with Madrona (as well as other fast batch simulators like MuJoCo MXJ).  Rendering for pixels-to-actions training has quite different requirements from your typical video game renderer: The goal is to render relatively small images (e.g., 64x64 or 256x256 in resolution), with relatively simple lighting and shading models, at the highest throughput possible.    
 
-      “Pixels to actions” training is an exciting training regime which has agents learning through images of what they see. Given that Madrona is a high-throughput batch simulator, we were compelled to explore what the most efficient architecture would be for a high-throughput batch renderer capable of rendering thousands of small images (64x64 to 256x256 in resolution) from the agents’ point of view.  Such a renderer would have different requirements than your typical renderer for a video game. For one, throughput is much more important than latency - it doesn’t matter if rendering a single 128x128 image takes 15ms so long as rendering 1024 images at once also takes 15ms. Furthermore, realism isn’t a hard requirement like it is in certain video games: learning experiments don’t require full path tracers and can make due with simple phong lighting as seen here.
+      <p>
+There are two well-established algorithms for image synthesis: rasterization and ray tracing. Typically, most people think of rasterization as “fast” rendering, and ray tracing as “slower”, higher quality rendering.  But that’s not the case. It’s well known that rasterization efficiency slows down under high geometry complexity or small area triangles (like what one sees when rendering small images), and that ray-tracing can be well optimized on the GPU.  Therefore, to understand which approach was better for high-throughput batch rendering, we explored both approaches. Our findings show that when rendering high geometry complexity environments, such as those from the Habitat Synthetic Scenes Dataset (HSSD) which average millions of polygons per scene,  our modestly optimized software ray tracer (which does not use ray tracing hardware acceleration) performs significantly better than the hardware-accelerated rasterization pipeline in many important pixels-to-actions training situations such as training on an H100. 
 
+      <p>
+Aside from better performance, our ray tracer provides obvious paths towards more realistic images which involve shadows or indirect lighting. While the rasterizer would require an entirely new render pass to render shadow maps (further overloading the already bottlenecked hardware geometry processor), the ray tracer simply requires an extra ray to be traced. The rasterizer also requires a context switch out of the simulator’s CUDA context into Vulkan to invoke the GPU’s graphics hardware functionality. This not only imposes a performance overhead, it also makes the rasterizer less trivial to use. The ray tracer however, integrates seamlessly with Madrona’s ECS paradigm, making it extremely intuitive to use. We therefore recommend users use the ray tracer for their pixels-to-actions training workloads.
 
-There are two established algorithms for image synthesis: rasterization and ray tracing.  We therefore explored both approaches with what we believe to be well-tuned implementations. Our findings show that the software ray tracer performs better than the rasterizer in many important situations such as training on an H100, on high geometry scenes or when in need of supporting effects like shadows.
+      <p>
+We hope that our renderer, with its speed and flexibility, allows researchers to more efficiently perform a variety of “pixels-to-actions” experiments!
 
      <p class='detail blurb'>
      For more information, see the following resources:
@@ -148,7 +153,7 @@ There are two established algorithms for image synthesis: rasterization and ray 
         <h3>I need a batch renderer for my non-Madrona application! How can I use your renderers for my use case?</h3>
 
         <p class='detail'>
-        See the Madrona Renderer repository linked in the additional resources linked above the paper. There, you can see an example of just using the renderer which can be plugged into whatever application you like!
+        See the Madrona Renderer repository linked in the additional resources linked above the paper. There, you can see an example of just using the renderer which can be plugged into whatever application you like! We also have an example of integrating the renderer with an off the shelf simulator: MuJoCo MJX - this is also linked in the additional resources section above.
         </p>
 
       </div>
