@@ -398,6 +398,11 @@ a.paper-title:hover {
   border-radius: 0 0 10px 10px;
 }
 
+.blog .title-nav-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .blog .title {
   display: flex;
   flex-direction: column;
@@ -406,6 +411,19 @@ a.paper-title:hover {
 }
 
 .blog .title-bg {
+  background-color: #a9f09d;
+  border-radius: 0 0 10px 10px;
+  padding: 15px 20px 15px 20px;
+}
+
+.blog .next {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  color: #071D28;
+}
+
+.blog .next-bg {
   background-color: #a9f09d;
   border-radius: 0 0 10px 10px;
   padding: 15px 20px 15px 20px;
