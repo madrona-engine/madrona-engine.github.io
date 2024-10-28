@@ -309,6 +309,18 @@ ul {
   margin-right: auto;
 }
 
+.paper-block2 {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  border-radius: 10px;
+  padding: 15px 20px 15px 20px;
+  margin-top: 0px;
+  max-width: 805px;
+  margin-right: auto;
+}
+
 .paper-details-wrapper {
   display: flex;
   flex-direction: row;
@@ -327,7 +339,22 @@ ul {
   padding-right: 20pt;
 }
 
+#paper-download2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Noto Sans', sans-serif;
+  padding-right: 0pt;
+  margin-right: -70px;
+}
+
 #paper-download a {
+  text-align: center;
+  font-weight: 800;
+  margin-top: -8px;
+}
+
+#paper-download2 a {
   text-align: center;
   font-weight: 800;
   margin-top: -8px;
@@ -354,6 +381,14 @@ a.paper-title {
   color: #071D28;
 }
 
+a.paper-title2 {
+  display: inline-block;
+  padding-bottom: 2px;
+  font-weight: 900;
+  font-size: 2.1em;
+  color: #071D28;
+}
+
 a.paper-title:visited {
   color: #071D28;
 }
@@ -367,6 +402,14 @@ a.paper-title:hover {
   margin-left: 10px;
   line-height: 150%;
   padding-bottom: 6px;
+}
+
+.authors2 {
+  margin-left: 10px;
+  padding-top: 12px;
+  line-height: 150%;
+  padding-bottom: 4px;
+  font-size: 19px;
 }
 
 .conference {

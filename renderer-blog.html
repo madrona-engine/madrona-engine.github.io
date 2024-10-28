@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>Madrona Engine</title>
+    <meta charset='UTF-8'>
+    <link rel='icon' type='image/x-icon' href='favicon.ico'>
+    <meta name='viewport' content='width=device-width'>
+    <link href='https://fonts.googleapis.com/css?family=JetBrains+Mono' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel='stylesheet' href='style.css'>
+  </head>
+
+  <body class='blog-background'>
+    <div class='madrona-nav-wrapper blog-background'>
+      <div class='madrona-nav'>
+        <a href='/' class='logo-wrapper'>
+          <img src='madrona_simple.png' width='50' />
+          <span class='logo'>Madrona&nbsp;Engine</span>
+        </a>
+        <div class='madrona-nav-items'>
+          <a href='#renderer-paper' class='link'>
+            Paper
+          </a>
+          <a href='/#render-faq' class='link'>
+            FAQ 
+          </a>
+          <a href='/blog.html' class='link'>
+            Blog
+          </a>
+          <a href='https://github.com/shacklettbp/madrona' class='gh'>
+            <img src='github-mark.svg' alt='GitHub' />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class='blog'>
+
+      <div id='title-nav-container' class='title-nav-container'>
+        <div id='title' class='title'>
+          <div class='title-bg'>
+            <h1>
+              <span class='title-line'>Madrona v0.2: </span>
+              <span class='title-line'>Introducing the Engine's High Throughput Batch Renderer</span>
+            </h1> 
+            <p>Posted on Sunday, October 13th 2024 by <a href='https://www.linkedin.com/in/luc-rosenzweig/'>Luc Rosenzweig</a></p>
+          </div>
+        </div>
+
+        <div id='back' class='next-button'>
+          <div class='next-bg'>
+            <h2>
+              <a href='/blog.html'>Prev</a>
+            </h2>
+          </div>
+        </div>
+      </div>
+
+    <section id='intro'>
+
+      <p>
+“Pixels to actions” training involves agents learning to take actions based on rendered images of a virtual world. Given that Madrona is a high-throughput batch simulation architecture, we were compelled to also explore the question of how to architect a high throughput, batch rendering architecture that could efficiently interoperate with Madrona (as well as other fast batch simulators like MuJoCo MXJ).  Rendering for pixels-to-actions training has quite different requirements from your typical video game renderer: The goal is to render relatively small images (e.g., 64x64 or 256x256 in resolution), with relatively simple lighting and shading models, at the highest throughput possible.    
+
+      <p>
+There are two well-established algorithms for image synthesis: rasterization and ray tracing. Typically, most people think of rasterization as “fast” rendering, and ray tracing as “slower”, higher quality rendering.  But that’s not the case. It’s well known that rasterization efficiency slows down under high geometry complexity or small area triangles (like what one sees when rendering small images), and that ray-tracing can be well optimized on the GPU.  Therefore, to understand which approach was better for high-throughput batch rendering, we explored both approaches. Our findings show that when rendering high geometry complexity environments, such as those from the Habitat Synthetic Scenes Dataset (HSSD) which average millions of polygons per scene,  our modestly optimized software ray tracer (which does not use ray tracing hardware acceleration) performs significantly better than the hardware-accelerated rasterization pipeline in many important pixels-to-actions training situations such as training on an H100. 
+
+      <p>
+Aside from better performance, our ray tracer provides obvious paths towards more realistic images which involve shadows or indirect lighting. While the rasterizer would require an entirely new render pass to render shadow maps (further overloading the already bottlenecked hardware geometry processor), the ray tracer simply requires an extra ray to be traced. The rasterizer also requires a context switch out of the simulator’s CUDA context into Vulkan to invoke the GPU’s graphics hardware functionality. This not only imposes a performance overhead, it also makes the rasterizer less trivial to use. The ray tracer however, integrates seamlessly with Madrona’s ECS paradigm, making it extremely intuitive to use. We therefore recommend users use the ray tracer for their pixels-to-actions training workloads.
+
+      <p>
+We hope that our renderer, with its speed and flexibility, allows researchers to more efficiently perform a variety of “pixels-to-actions” experiments!
+
+     <p class='detail blurb'>
+     For more information, see the following resources:
+     <ul class='resources-list'>
+       <li><a href='https://github.com/llGuy/madrona_benchmark'>Benchmark Repository for Reproducing the Timings from the Paper</a></li>
+       <li><a href='https://github.com/llGuy/madrona_renderer'>Madrona Renderer (Standalone Batch Renderer which can be Plugged into any Engine)</a></li>
+       <li><a href='https://github.com/llGuy/madrona_mjx'>Madrona MJX (Example of Using Madrona's Renderer with MuJoCo MJX)</a></li>
+          <li><a href="#render-faq">Madrona Renderer FAQ</a></li>
+     </ul>
+     </p>
+    </section>
+
+    <section id='render-faq' class='info-section'>
+      <h1>FAQ</h1>
+      <div class='content'>
+
+        <h3>How programmable is the ray tracer?</h3>
+
+        <p class='detail'>
+        Currently, the output of the ray tracer is hardcoded to RGB and depth with optional shadows as you can see <a href="https://github.com/shacklettbp/madrona/blob/18268e97fa6fbc3c7f3760b871a1ec8dcf3b3000/src/mw/device/bvh_raycast.cpp#L784">here</a>. However, we plan to create a way for users to program their own "ray tracing shaders" in the Madrona framework in the future. For now, users must hardcode modifications at the location linked previously.
+        </p>
+
+        <h3>I need a batch renderer for my non-Madrona application! How can I use your renderers for my use case?</h3>
+
+        <p class='detail'>
+        See the Madrona Renderer repository linked in the additional resources linked above the paper. There, you can see an example of just using the renderer which can be plugged into whatever application you like! We also have an example of integrating the renderer with an off the shelf simulator: MuJoCo MJX - this is also linked in the additional resources section above.
+        </p>
+
+      </div>
+    </section>
+
+    </div>
+  </body>
+</html>
