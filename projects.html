@@ -1,0 +1,77 @@
+<html>
+ <head>
+   <title>Madrona Projects</title>
+     <link rel="icon" type="image/x-icon" href="favicon.ico">
+     <meta name='viewport' content='width=device-width'>
+     <link href='https://fonts.googleapis.com/css?family=JetBrains+Mono' rel='stylesheet'>
+     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+     <link rel='stylesheet' href='style.css'>
+ </head>
+ <body id='projects-body'>
+    <div class='madrona-nav-wrapper'>
+      <div class='madrona-nav'>
+        <a href='#' class='logo-wrapper'>
+          <img src='madrona_simple.png' width='50'>
+          <span class='logo'>Madrona&nbsp;Engine</span>
+        </a>
+        <div class='madrona-nav-items'>
+          <a href='#paper' class='link'>
+            Paper
+          </a>
+          <a href='#faq' class='link'>
+            FAQ 
+          </a>
+          <a href='blog.html' class='link'>
+            Blog
+          </a>
+          <a href='https://github.com/shacklettbp/madrona' class='gh'>
+            <img src='github-mark.svg' alt='GitHub'>
+          </a>
+        </div>
+      </div>
+    </div>
+   <section id='intro' class='info-section'>
+     <div class='content'>
+       <h2>Madrona: A GPU-Accelerated Game Engine for Training AI Agents</h2>
+       <p class='detail blurb'>
+         Training AI agents to perform challenging tasks often requires agents to make hundreds of millions to billions of trial-and-error actions in complex simulated learning environments. To enable rapid prototyping for machine learning research, these learning environments are often built on top of game engines like Unity or Unreal Engine that provide extensive off-the-shelf functionality and features. Unfortunately, these existing engines are not designed for the challenging computational workload of generating huge amounts of training experience, resulting in simulation costs bottlenecking end-to-end training experiments.
+       </p>
+       <p class='detail blurb'>
+          To overcome these simulation bottlenecks, researchers have begun reimplementing learning environments from scratch using GPU-accelerated batch simulation. Batch simulators execute thousands of learning environments simultaneously on a single GPU, enabling orders of magnitude end-to-end speedups to training experiments. The challenge is that building these batch simulators requires low-level GPU programming expertise and extensive engineering effort, resulting in relatively few batch simulators being built and used in research.
+       </p>
+       <p class='detail blurb'>
+          To make building high-performance learning environments more accessible, we began the Madrona project. Inspired by the ease of use of game engines and the performance of batch simulators, the Madrona Engine aims to combine the best of both worlds into a game engine designed from the ground up for building high-performance, GPU-accelerated batch learning environments. Using just a single GPU, environments built on Madrona are capable of generating millions of simulated steps per second, often accelerating end-to-end experiments by orders of magnitude. The result has been several successful research projects using the engine since we presented it at SIGGRAPH 2023. These projects are described below, along with discussion of how each of them benefited from the performance and features of Madrona.
+       </p>
+     </div>
+   </section>
+   <section id='gpudrive' class='info-section'>
+     <div class='content'>
+      <h2>GPUDrive: Multi-Agent Driving Simulation at 1 Million FPS</h2>
+      <div id='gpudrive-videos'>
+        <img src='sim_video_7.gif'>
+        <img src='obs_video_7.gif'>
+      </div>
+      <div id='gpudrive-caption'>
+        <p>GPUDrive can simulate thousands of independent driving scenarios simultaneously on a single GPU.</p>
+      </div>
+      <p class='detail blurb'>
+      <a href='https://openreview.net/forum?id=ERv8ptegFi'>GPUDrive</a> is a high-level self driving car simulator that trains driving agents in scenarios from the <a href='https://waymo.com/open/'>Waymo Open Dataset</a>. Developed at NYU, GPUDrive is designed to accelerate reinforcement learning research on multi-agent planning for autonomous driving; a challenging and data-hungry learning task. Madrona's GPU acceleration enables GPUDrive to generate over a million steps of experience per second on a single GPU. The result is that an agent trained with GPUDrive can solve a scene from the Waymo dataset in seconds, rather than hours per scene for a purely <a href='https://openreview.net/forum?id=DcfsR89KUa'>CPU-based simulator</a> written by the GPUDrive authors previously.
+      </p>
+      <div id='waymax-vs-gpudrive'>
+        <p class='detail blurb'>
+        Additionally, key features of Madrona enable GPUDrive to significantly outperform <a href='https://waymo.com/research/waymax/'>Waymax</a>, a GPU-accelerated self driving simulator developed by Waymo, targetting the same dataset as GPUDrive. Waymax is built on <a href='https://docs.jax.dev/en/latest/'>JAX</a>, an array-based programming framework that accelerates bulk array operations on the GPU (or TPU). The key limitation of JAX is that programs must be written in terms of operations on statically sized arrays. The irregular nature of scenes in the Waymo dataset, where the number of active and parked vehicles and complexity of road geometry varies wildly, presents a challenge for the statically-sized array model enforced by JAX. As a result, Waymax must overallocate arrays for worst-case scene complexity, significantly limiting the amount of parallel work that can be mapped onto a single GPU. As shown on the right, due to this overallocation Waymax runs out of memory when simulating more than 16 parallel driving scenarios.
+        </p>
+        <img id='waymax-vs-gpudrive-img' src='waymax_vs_gpudrive.svg'>
+     </div>
+     <p class='detail blurb'>
+     One of the core design goals of Madrona is to avoid the worst-case overallocation issues seen in Waymax (and other simulators built on array-based programming frameworks). Madrona supports high-performance dynamic allocation of GPU memory on a per-environment basis, allowing the number of simulated entities (cars, road segments, etc) to vary between driving scenarios without incurring memory overheads. This capability allows GPUDrive to simulate thousands of parallel driving scenarios simultaneously to achieve over 10 times higher throughput than Waymax.
+     </p>
+   </section>
+   <section id='renderer'>
+   </section>
+   <section id='fps'>
+   </section>
+   <section id='overcooked'>
+   </section>
+ </body>
+</html>

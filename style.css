@@ -553,6 +553,80 @@ a.paper-title:hover {
   padding-top: 8px;
 }
 
+#projects-body section {
+  max-width: 1000px;
+}
+
+#projects-body {
+  align-items: center;
+}
+
+#projects-body .content {
+  margin-left: 0px;
+  width: 100%;
+}
+
+#projects-body section.info-section {
+  margin-top: 30pt;
+  width: 100%;
+}
+
+#gpudrive {
+  margin-top: 50px;
+}
+
+#waymax-vs-gpudrive {
+  display: flex;
+  flex-direction: row;
+}
+
+#waymax-vs-gpudrive p.detail {
+  width: 60%;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#waymax-vs-gpudrive-img {
+  padding-top: 15px;
+  width: 40%;
+}
+
+#gpudrive h2 {
+  padding-bottom: 20px;
+}
+
+#gpudrive-videos img {
+  display: inline;
+  width: 30%;
+  max-width: 300px;
+}
+
+#gpudrive-videos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#gpudrive-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+#gpudrive-caption p {
+  font-size: 1.0em;
+  width: 50%;
+}
+
 @media only screen and (max-width: 480px) {
   .madrona-nav-items {
     font-size: 16pt;
