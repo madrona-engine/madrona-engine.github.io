@@ -627,6 +627,14 @@ a.paper-title:hover {
   width: 50%;
 }
 
+#renderer-videos {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 5px;
+}
+
 @media only screen and (max-width: 480px) {
   .madrona-nav-items {
     font-size: 16pt;
