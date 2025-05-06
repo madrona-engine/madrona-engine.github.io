@@ -85,16 +85,27 @@
         <p>Madrona's batch renderer combined with <a href='https://mujoco.readthedocs.io/en/stable/mjx.html'>Mujoco MJX physics</a> has already enabled sim2real transfer to robots at the University of Toronto performing simple push block and picking tasks.</p>
       </div>
       <p class='detail blurb'>
-      We have developed a high-performance <a href='https://madrona-engine.github.io/renderer.html'>"batch renderer"</a> within Madrona for the purposes of speeding up pixels-to-actions training. When training pixels-to-actions, agents must learn to perform actions given a rendered image of what they see. Given the huge amount of experience required to train an agent to perform tasks using RL, if one were to provide rendered images as observations to the agent, one would need to render billions of images as fast as possible. Previously, researchers would be bottlenecked on the rendering of all these images. However, with our carefully designed renderer, we are able to comfortably achieve 10s of thousands of FPS for high complexity scenes and hundreds of thousands for simpler scenes (like the one you see for the "push block" task). We have made the renderer easy to integrate with <a href='https://github.com/shacklettbp/madrona_mjx'>non-Madrona simulators such as MJX</a> (used in the Sim2Real transfer shown above) so that researchers can make use of this performance regardless of the physics engine they use.
+      Training agents to perform tasks using visual observations of the world is an important problem for robotics and embodied AI. These "pixels-to-actions" tasks are challenging, because agents must both learn the core control skills for their task while also processing complex incoming visuals to reason about the current state of their environment. End-to-end pixels-to-actions experiments often require billions of rendered images in total; as as result, the relatively slow renderers used in much of the prior work become a significant bottleneck to end-to-end experiment times.
+ To accelerate research in this area, Madrona includes a high-performance <a href='https://madrona-engine.github.io/renderer.html'>3D "batch renderer"</a> that can render thousands of agent observations simultaneously for use with high-performance batch simulators that can reach millions of frames per second.
       </p>
+      <div id='hssd-inset'>
+        <p class='detail blurb'>
+        Madrona's batch renderer is designed from the ground up to focus on throughput by exposing as much parallel rendering work to the GPU as possible. The renderer achieves hundreds of thousands of frames per second of aggregate throughput on simple environments and tens of thousands in complex environments such as the batch of agent views from the <a href='https://3dlg-hcvc.github.io/hssd/'>Habitat Synthetic Scenes Dataset</a> shown on the right.<br/>
+        <br id='hssd-inset-linebreak'/>
+        Additionally, the renderer utilizes high-performance Madrona APIs for exchanging simulator state on the GPU to provide a <i>simulator agnostic</i> interface to the renderer. A collaboration with researchers at Google Deepmind and the University of Toronto <a href='https://github.com/shacklettbp/madrona_mjx'>combined the Madrona renderer with Mujoco MJX</a> to provide support for high-performance pixels to actions training to <a href='https://playground.mujoco.org/'>Mujoco Playground</a>, an end-to-end platform for robot learning.
+        </p>
+        <img id='hssd' src='hssd.png'>
+      </div>
+      <p class='detail blurb'>
+      A key Madrona feature that is reflected in the batch renderer's design as well is support for per-environment domain randomization: different numbers of objects in each environment, different textures and material properties for each object in each environment, and randomized lighting as well. These domain randomization features leverage the idea that in Madrona each environment can share as much, or as little, structure as is appropriate. Researchers at the University of Toronto have used the domain randomization features provided by the renderer to successfully transfer of policies learned in simulation to real-world robots using camera-based observations. These experiments are shown in the videos at the beginning of this section; note that the resulting policies are also robust to humans interfering with the robot.
+      </p>
+
+      <!-- Previously, researchers would be bottlenecked on the rendering of all these images. However, with our carefully designed renderer, we are able to comfortably achieve 10s of thousands of FPS for high complexity scenes and hundreds of thousands for simpler scenes (like the one you see for the "push block" task). We have made the renderer easy to integrate with <a href=''>non-Madrona simulators such as MJX</a> (used in the Sim2Real transfer shown above) so that researchers can make use of this performance regardless of the physics engine they use.
 
       <p class='detail blurb'>
         We call this renderer a "batch renderer" because it renders thousands of images all at once at as high throughput as possible. This means that our design was guided purely by throughput-maximization, and not latency-minimization (which you might want for a video game). We are able to leverage Madrona's core ECS systems and memory management schemes to enable the implementation of two different renderers: one based on rasterization and one based on ray tracing. Experiments have led us to converge towards the conclusion that ray tracing is the way forward with regard to embodied AI training. This is because ray tracing is an algorithm which makes more complex effects like shadows, lensing, global illumination much more approachable than rasterization.
       </p>
-
-      <p class='detail blurb'>
-        Madrona's core architecture allows for a lot of flexibility when it comes to domain randomization. This is especially important in rendering for embodied AI where being able to modify scene and material properties can drastically improve task performance and generalizability. We made sure to make domain randomization with Madrona's renderer as powerful as possible - lights, materials, and even objects themselves can vary a lot across each environment.
-      </p>
+      -->
      </div>
    </section>
    <section id='competitive' class='info-section'>

@@ -675,6 +675,31 @@ a.paper-title:hover {
   width: 80%;
 }
 
+#hssd-inset {
+  display: flex;
+  flex-direction: row;
+}
+
+#hssd-inset-linebreak {
+  line-height: 10px;
+}
+
+#hssd-inset p.detail {
+  width: 60%;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#hssd {
+  padding-top: 15px;
+  width: 40%;
+}
+
+#renderer-additionally {
+  padding-top: 5px;
+}
+
 @media only screen and (max-width: 480px) {
   .madrona-nav-items {
     font-size: 16pt;
