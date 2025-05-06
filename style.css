@@ -622,7 +622,23 @@ a.paper-title:hover {
   margin-bottom: 20px;
 }
 
+#renderer-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
 #gpudrive-caption p {
+  font-size: 1.0em;
+  width: 60%;
+}
+
+#renderer-caption p {
   font-size: 1.0em;
   width: 50%;
 }
