@@ -52,7 +52,7 @@
         <img src='obs_video_7.gif'>
       </div>
       <div id='gpudrive-caption'>
-        <p>GPUDrive can simulate thousands of independent driving scenarios simultaneously on a single GPU.</p>
+        <p>GPUDrive simulates a simplified driving environment so agents can focus on learning planning and coordination. Madrona allows GPUDrive to simulate thousands of independent driving scenarios simultaneously on a single GPU.</p>
       </div>
       <p class='detail blurb'>
       <a href='https://openreview.net/forum?id=ERv8ptegFi'>GPUDrive</a> is a high-level self driving car simulator that trains driving agents in scenarios from the <a href='https://waymo.com/open/'>Waymo Open Dataset</a>. Developed at NYU, GPUDrive is designed to accelerate reinforcement learning research on multi-agent planning for autonomous driving; a challenging and data-hungry learning task. Madrona's GPU acceleration enables GPUDrive to generate over a million steps of experience per second on a single GPU. The result is that an agent trained with GPUDrive can solve a scene from the Waymo dataset in seconds, rather than hours per scene for a purely <a href='https://openreview.net/forum?id=DcfsR89KUa'>CPU-based simulator</a> written by the GPUDrive authors previously.
@@ -82,7 +82,7 @@
          </video>
       </div>
       <div id='renderer-caption'>
-        <p>Sim2Real transfer for the "push block" task with rendering done in Madrona.</p>
+        <p>Madrona's batch renderer combined with <a href='https://mujoco.readthedocs.io/en/stable/mjx.html'>Mujoco MJX physics</a> has already enabled sim2real transfer to robots at the University of Toronto performing simple push block and picking tasks.</p>
       </div>
       <p class='detail blurb'>
       We have developed a high-performance <a href='https://madrona-engine.github.io/renderer.html'>"batch renderer"</a> within Madrona for the purposes of speeding up pixels-to-actions training. When training pixels-to-actions, agents must learn to perform actions given a rendered image of what they see. Given the huge amount of experience required to train an agent to perform tasks using RL, if one were to provide rendered images as observations to the agent, one would need to render billions of images as fast as possible. Previously, researchers would be bottlenecked on the rendering of all these images. However, with our carefully designed renderer, we are able to comfortably achieve 10s of thousands of FPS for high complexity scenes and hundreds of thousands for simpler scenes (like the one you see for the "push block" task). We have made the renderer easy to integrate with <a href='https://github.com/shacklettbp/madrona_mjx'>non-Madrona simulators such as MJX</a> (used in the Sim2Real transfer shown above) so that researchers can make use of this performance regardless of the physics engine they use.
@@ -97,11 +97,26 @@
       </p>
      </div>
    </section>
-   <section id='fps' class='info-section'>
+   <section id='competitive' class='info-section'>
      <div class='content'>
       <h2>Competitive Self Play in Large-Scale 3D Video Game Environments</h2>
+      <div id='competitive-videos'>
+         <video autoplay muted playsinline loop height='300' poster='simple_map_replay_thumbnail.jpg'>
+           <source src='simple_map_replay.mp4' type='video/mp4' />
+         </video>
+         <img src='competitive_big_map.jpg' height='300'>
+      </div>
+      <div id='competitive-caption'>
+        <p>Agents compete in a 6 vs 6 match to control regions of large 3D game maps. Agents must learn to navigate the map, control their weapons (aiming, shooting) and coordinate with their teammates.</p>
+      </div>
       <p class='detail blurb'>
-      Training agents to perform competitive tasks is inherently challenging, because the difficulty and exact nature of the task depends on the skill level of the agents' opponents. One solution that has been used to great success in video games like <a href=''>Dota 2</a> and <a href=''>Starcraft</a> is self-play reinforcement learning 
+      Training agents to perform competitive tasks is inherently challenging, because the exact nature of the task (effective strategies, difficulty, etc) depends on the skill level of the agents' opponents. One popular technique to tackle these kinds of problems is self-play reinforcement learning, where the agent competes against copies of itself and continually improves. Self play has been used for flagship reinforcement learning results to produce super-human level agents in complex games like <a href='https://openai.com/index/openai-five-defeats-dota-2-world-champions/'>Dota 2</a> and <a href='https://deepmind.google/research/breakthroughs/alphago/'>Go</a>. 
+      </p>
+      <p class='detail blurb'>
+      Although the promise of discovering previously unknown skills and strategies through self play is enticing, the computational costs of self play reinforcement learning on non-trivial environments have historically been far beyond the capabilities of most research labs. <a href='https://github.com/shacklettbp/madrona-mp-env'>MadronaShowdown</a> aims to solve this problem by providing a high performance, but also mechanically complex benchmark environment for self play reinforcement learning research. MadronaShowdown is a 6 vs 6 multiplayer game with mechanics inspired by games such as Call of Duty and Quake, where agents compete against eachother to control 3D game levels, including real game assets taken from <a href='https://github.com/Activision/madrona-mp-geo'>Activision's Caldera dataset</a>.
+      </p>
+      <p class='detail blurb'>
+      MadronaShowdown relies on several of the core capabilities of the Madrona Engine. First, one of the key goals for Madrona is to provide high-performance APIs that allow for rapid "scripting" of task-specific logic that Madrona automatically schedules efficiently onto the GPU. MadronaShowdown uses these APIs extensively to implement custom game play logic for the environment: tracking player health, weapon states and game scoring to name a few; all this custom logic executes in parallel on the GPU alongside core engine routines. Second, MadronaShowdown leverages the thousands of parallel environments Madrona supports to train multiple deep neural networks (DNN) simultaneously on a single GPU. This allows the DNNs to learn different skills and strategies and compete with eachother, increasing the diversity of agent behaviors and stabilizing training.
       </p>
      </div>
    </section>

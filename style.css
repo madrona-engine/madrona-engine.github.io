@@ -635,12 +635,12 @@ a.paper-title:hover {
 
 #gpudrive-caption p {
   font-size: 1.0em;
-  width: 60%;
+  width: 80%;
 }
 
 #renderer-caption p {
   font-size: 1.0em;
-  width: 50%;
+  width: 80%;
 }
 
 #renderer-videos {
@@ -649,6 +649,30 @@ a.paper-title:hover {
   margin-left: auto;
   margin-right: auto;
   gap: 5px;
+}
+
+#competitive-videos {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 5px;
+}
+
+#competitive-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+#competitive-caption p {
+  font-size: 1.0em;
+  width: 80%;
 }
 
 @media only screen and (max-width: 480px) {
