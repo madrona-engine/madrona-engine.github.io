@@ -123,13 +123,18 @@
          </video>
       </div>
       <div id='physics-caption'>
-        <p>TODO</p>
+        <p>
+        From left to right: robot arm simulation; trained humanoid to balance on wobbling board with obstacles being shot at it; trained walking humanoid with DeepMimic.
+        </p>
       </div>
       <p class='detail blurb'>
+      There is a lot of excitement around fast GPU simulation of rigid body physics, particularly in the robotics space. Many such GPU physics simulators have been created for the purpose of speeding up robot training (MuJoCo MJX, mjWarp, Isaac Gym, Genesis, etc...). However, all of these simulators have fundamental limitations which inhibit the flexibility of the environments one can create with them. For instance, the lack of programmability of these simulators makes it difficult, if not impossible, to have highly varied or procedurally generated worlds.
       </p>
       <p class='detail blurb'>
+      We decided in the face of these limitations, to start work on a custom rigid body physics system from the ground up in Madrona with a solver that is highly inspired by MuJoCo's. Being fully integrated into Madrona's system and architecture, this new physics simulator can fully utilize the programmability and flexibility of Madrona. Physics objects can interact with fully procedurally generated, or highly domain-randomized environments.
       </p>
       <p class='detail blurb'>
+      This system is still work in progress but we are excited to see how this level of programmability and flexibility can enable new research directions in the robotics field! Particulary, we think that in conjunction with the renderer, where we can fully utilize domain randomization, interesting new questions can now be tackled more efficiently!
       </p>
      </div>
    </section>
