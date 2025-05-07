@@ -55,7 +55,7 @@
         <p>GPUDrive simulates a simplified driving environment so agents can focus on learning planning and coordination. Madrona allows GPUDrive to simulate thousands of independent driving scenarios simultaneously on a single GPU.</p>
       </div>
       <p class='detail blurb'>
-      <a href='https://openreview.net/forum?id=ERv8ptegFi'>GPUDrive</a> is a high-level self driving car simulator that trains driving agents in scenarios from the <a href='https://waymo.com/open/'>Waymo Open Dataset</a>. Developed at NYU, GPUDrive is designed to accelerate reinforcement learning research on multi-agent planning for autonomous driving; a challenging and data-hungry learning task. Madrona's GPU acceleration enables GPUDrive to generate over a million steps of experience per second on a single GPU. The result is that an agent trained with GPUDrive can solve a scene from the Waymo dataset in seconds, rather than hours per scene for a purely <a href='https://openreview.net/forum?id=DcfsR89KUa'>CPU-based simulator</a> written by the GPUDrive authors previously.
+      <a href='https://openreview.net/forum?id=ERv8ptegFi'>GPUDrive</a> is a high-level self driving car simulator that trains driving agents in scenarios from the <a href='https://waymo.com/open/'>Waymo Open Dataset</a>. Developed by the <a href='https://emerge-lab.github.io/'>Emerge Lab at New York University</a>, GPUDrive is designed to accelerate reinforcement learning research on multi-agent planning for autonomous driving; a challenging and data-hungry learning task. Madrona's GPU acceleration enables GPUDrive to generate over a million steps of experience per second on a single GPU. The result is that an agent trained with GPUDrive can solve a scene from the Waymo dataset in seconds, rather than hours per scene for a purely <a href='https://openreview.net/forum?id=DcfsR89KUa'>CPU-based simulator</a> written by the GPUDrive authors previously.
       </p>
       <div id='waymax-vs-gpudrive'>
         <p class='detail blurb'>
@@ -97,7 +97,7 @@
         <img id='hssd' src='hssd.png'>
       </div>
       <p class='detail blurb'>
-      A key Madrona feature that is reflected in the batch renderer's design as well is support for per-environment domain randomization: different numbers of objects in each environment, different textures and material properties for each object in each environment, and randomized lighting as well. These domain randomization features leverage the idea that in Madrona each environment can share as much, or as little, structure as is appropriate. Researchers at the University of Toronto have used the domain randomization features provided by the renderer to successfully transfer policies learned in simulation to real-world robots using camera-based observations. These experiments are shown in the videos at the beginning of this section; note that the resulting policies are also robust to humans interfering with the robot.
+      A key Madrona feature that is reflected in the batch renderer's design as well is support for per-environment domain randomization: different numbers of objects in each environment, different textures and material properties for each object in each environment, and randomized lighting as well. These domain randomization features leverage the idea that in Madrona each environment can share as much, or as little, structure as is appropriate. Researchers at the University of Toronto have used the domain randomization features provided by the renderer to successfully transfer of policies learned in simulation to real-world robots using camera-based observations. These experiments are shown in the videos at the beginning of this section; note that the resulting policies are also robust to humans interfering with the robot.
       </p>
 
       <!-- Previously, researchers would be bottlenecked on the rendering of all these images. However, with our carefully designed renderer, we are able to comfortably achieve 10s of thousands of FPS for high complexity scenes and hundreds of thousands for simpler scenes (like the one you see for the "push block" task). We have made the renderer easy to integrate with <a href=''>non-Madrona simulators such as MJX</a> (used in the Sim2Real transfer shown above) so that researchers can make use of this performance regardless of the physics engine they use.
@@ -111,13 +111,15 @@
    <section id='physics' class='info-section'>
      <div class='content'>
       <h2>High-Performance, Realistic, and Customizable Rigid Body Physics in Madrona</h2>
-      <!--<div id='competitive-videos'>
-         <video autoplay muted playsinline loop height='300' poster='simple_map_replay_thumbnail.jpg'>
-           <source src='simple_map_replay.mp4' type='video/mp4' />
+      <div id='physics-videos'>
+         <video autoplay muted playsinline loop height='300' poster='robot_arm_thumbnail.jpg'>
+           <source src='robot_arm.mp4' type='video/mp4' />
          </video>
-         <img src='competitive_big_map.jpg' height='300'>
-      </div>-->
-      <div id='competitive-caption'>
+         <video autoplay muted playsinline loop height='300' poster='wobble_board_thumbnail.jpg'>
+           <source src='wobble_board.mp4' type='video/mp4' />
+         </video>
+      </div>
+      <div id='physics-caption'>
         <p>TODO</p>
       </div>
       <p class='detail blurb'>
@@ -154,10 +156,26 @@
    <section id='overcooked' class='info-section'>
      <div class='content'>
        <h2>Learning Robust Human-Compatible Cooperative Strategies in Overcooked AI</h2>
-      <p class='detail blurb'>
-      TODO
-      </p>
-     </div>
+       <div id='overcooked-videos'>
+         <video autoplay muted playsinline loop height='300' poster='simple_map_replay_thumbnail.jpg'>
+           <source src='overcooked_sp.mp4' type='video/mp4' />
+         </video>
+         <video autoplay muted playsinline loop height='300' poster='simple_map_replay_thumbnail.jpg'>
+           <source src='overcooked_comedi.mp4' type='video/mp4' />
+         </video>
+       </div>
+      <div id='overcooked-caption'>
+        <p>Overcooked AI is a cooperative game where agents work together to cook dishes. In the above videos, the blue player is controlled by a human, while the green player is controlled by a reinforcement learned policy. Standard self play on the right produces a policy that refuses to adapt to the human's behavior (note how the green player will not move out of the human's way), while the CoMeDi algorithm (using Madrona) on the left actively changes plans in response to player actions.</p>
+      </div>
+       <p class='detail blurb'>
+       An important problem for multi-agent tasks is training agents that are <i>human compatible</i>; in other words, agents must not only be able to interact effectively with eachother but also be able to interact with humans (essentially a new class of agents that they have not encountered in training). Although being robust to unseen human strategies is important for competitive tasks, human compatible agents are particularly crucial for cooperative tasks where agents must interact with humans in some way (many robotics tasks fall in this category).
+       </p>
+       <p class='detail blurb'>
+       <a href='https://github.com/HumanCompatibleAI/overcooked_ai'>Overcooked AI</a> is a popular benchmark environment for research into human-AI cooperation; however, the environment is written in Python, and the resulting poor simulation performance is a bottleneck for rapid ML research. To solve this problem, researchers from Stanford reimplemented Overcooked AI in Madrona and achieved orders of magnitude performance improvements with peak simulation throughput at over 40 million frames per second. For more information, refer to <a href='https://bsarkar321.github.io/blog/overcooked_madrona/index.html'>this blog post</a> from the researcher who ported Overcooked AI to Madrona that goes into detail on the implementation and architecture of the Madrona version of Overcooked.
+       </p>
+       <p class='detail blurb'>
+       After experimenting with the extremely high throughput achieved by running Overcooked on the GPU, the authors of the environment made an important observation: at 40 million FPS, the simulator can generate so much training data in parallel that existing training algorithms cannot leverage all of this data to improve the policy; in other words, learning speed plateaus. In <a href='https://iliad.stanford.edu/Diverse-Conventions/'>Diverse Conventions for Human-AI Collaboration</a>, the authors use this extra throughput to quickly train multiple policies, and introduce CoMeDi, a matchmaking algorithm that results in a final policy that understands how to interact with an cooperate with a variety of different playstyles, including humans, as shown in the images above. This type of innovative algorithm design suggests that many opportunities exist in developing new algorithms to better leverage the extremely high throughput achieved by GPU-accelerated learning environments like those built on Madrona.
+       </p>
    </section>
  </body>
 </html>

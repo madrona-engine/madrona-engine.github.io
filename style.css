@@ -700,6 +700,30 @@ a.paper-title:hover {
   padding-top: 5px;
 }
 
+#overcooked-videos {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 5px;
+}
+
+#overcooked-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+#overcooked-caption p {
+  font-size: 1.0em;
+  width: 80%;
+}
+
 @media only screen and (max-width: 480px) {
   .madrona-nav-items {
     font-size: 16pt;
